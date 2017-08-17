@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7ED2AB2C-2C3D-4649-B499-F41D27EAEA81}"
+	ProjectSection(SolutionItems) = preProject
+		Assembly.Software.Loftware.vsmdi = Assembly.Software.Loftware.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Assembly.Software.Loftware", "Assembly.Software.Loftware\Assembly.Software.Loftware.vbproj", "{0F752EEC-700D-4D77-881C-722A3706BE10}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Assembly.Software.Loftware_TEST", "Assembly.Software.Loftware_TEST\Assembly.Software.Loftware_TEST.vbproj", "{51377AF4-7477-4561-A8A2-28001D56C8CF}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://assemblysrv:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Assembly.Software.Loftware\\Assembly.Software.Loftware.vbproj
+		SccProjectName1 = Assembly.Software.Loftware
+		SccLocalPath1 = Assembly.Software.Loftware
+		SccProjectUniqueName2 = Assembly.Software.Loftware_TEST\\Assembly.Software.Loftware_TEST.vbproj
+		SccProjectName2 = Assembly.Software.Loftware_TEST
+		SccLocalPath2 = Assembly.Software.Loftware_TEST
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Assembly.Software.Loftware.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F752EEC-700D-4D77-881C-722A3706BE10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F752EEC-700D-4D77-881C-722A3706BE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F752EEC-700D-4D77-881C-722A3706BE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F752EEC-700D-4D77-881C-722A3706BE10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51377AF4-7477-4561-A8A2-28001D56C8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51377AF4-7477-4561-A8A2-28001D56C8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51377AF4-7477-4561-A8A2-28001D56C8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51377AF4-7477-4561-A8A2-28001D56C8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

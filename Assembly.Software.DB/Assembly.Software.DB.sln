@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94E25A21-65D0-4955-A8DD-A9B59B2AA2B9}"
+	ProjectSection(SolutionItems) = preProject
+		Assembly.Software.DB.vsmdi = Assembly.Software.DB.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Assembly.Software.DB", "Assembly.Software.DB\Assembly.Software.DB.vbproj", "{EE88FB3D-720A-4B53-9C08-2A0C34DD588C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Assembly.Software.DB.Tests", "Assembly.Software.DB.Tests\Assembly.Software.DB.Tests.vbproj", "{D3C2FB9A-C869-4662-80EF-70FCF1BFD166}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://assemblysrv:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Assembly.Software.DB\\Assembly.Software.DB.vbproj
+		SccProjectName1 = Assembly.Software.DB
+		SccLocalPath1 = Assembly.Software.DB
+		SccProjectUniqueName2 = Assembly.Software.DB.Tests\\Assembly.Software.DB.Tests.vbproj
+		SccProjectName2 = Assembly.Software.DB.Tests
+		SccLocalPath2 = Assembly.Software.DB.Tests
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Assembly.Software.DB.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE88FB3D-720A-4B53-9C08-2A0C34DD588C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE88FB3D-720A-4B53-9C08-2A0C34DD588C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE88FB3D-720A-4B53-9C08-2A0C34DD588C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE88FB3D-720A-4B53-9C08-2A0C34DD588C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C2FB9A-C869-4662-80EF-70FCF1BFD166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C2FB9A-C869-4662-80EF-70FCF1BFD166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C2FB9A-C869-4662-80EF-70FCF1BFD166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C2FB9A-C869-4662-80EF-70FCF1BFD166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44C0E1EB-35A6-49DA-979C-079F0C774EB1}"
+	ProjectSection(SolutionItems) = preProject
+		localtestrun.testrunconfig = localtestrun.testrunconfig
+		SQL Server DB Script Generator.vsmdi = SQL Server DB Script Generator.vsmdi
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SQL Server DB Script Generator", "SQL Server DB Script Generator\SQL Server DB Script Generator.vbproj", "{BCCDBBC2-FC40-492C-B62B-24F574FF3609}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SSDSG Testing", "SSDSG Testing\SSDSG Testing.vbproj", "{43829930-8EA9-4DFB-B9A6-D694556A56D5}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://assemblysrv:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SQL\u0020Server\u0020DB\u0020Script\u0020Generator\\SQL\u0020Server\u0020DB\u0020Script\u0020Generator.vbproj
+		SccProjectName1 = SQL\u0020Server\u0020DB\u0020Script\u0020Generator
+		SccLocalPath1 = SQL\u0020Server\u0020DB\u0020Script\u0020Generator
+		SccProjectUniqueName2 = SSDSG\u0020Testing\\SSDSG\u0020Testing.vbproj
+		SccProjectName2 = SSDSG\u0020Testing
+		SccLocalPath2 = SSDSG\u0020Testing
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SQL Server DB Script Generator.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCCDBBC2-FC40-492C-B62B-24F574FF3609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCCDBBC2-FC40-492C-B62B-24F574FF3609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCCDBBC2-FC40-492C-B62B-24F574FF3609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCCDBBC2-FC40-492C-B62B-24F574FF3609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43829930-8EA9-4DFB-B9A6-D694556A56D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43829930-8EA9-4DFB-B9A6-D694556A56D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43829930-8EA9-4DFB-B9A6-D694556A56D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43829930-8EA9-4DFB-B9A6-D694556A56D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

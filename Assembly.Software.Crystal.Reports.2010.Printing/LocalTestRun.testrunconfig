@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRunConfiguration name="Local Test Run" id="2c6cc0b3-c6cf-4e9f-9199-b4221525260f" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <Description>This is a default test run configuration for a local test run.</Description>
+  <Deployment>
+    <DeploymentItem filename="PrintLabel\bin\Debug\PrintLabel.dll.config" />
+  </Deployment>
+  <TestTypeSpecific />
+</TestRunConfiguration>

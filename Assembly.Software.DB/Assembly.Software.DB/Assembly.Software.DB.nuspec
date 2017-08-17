@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Assembly.Software.DB.V2.0</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Raz Davidovich</authors>
+    <owners>Assembly Software LTD</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Assembly Software DB abstruction DLL for internal projects development</description>
+    <releaseNotes>This is the main software release for this component.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Assembly Software DB</tags>
+  </metadata>
+  <files>
+    <file src="bin\Debug\Assembly.Software.Profile.dll" target="lib" />
+  </files>  
+</package>
