@@ -17,7 +17,7 @@
   </metadata>
   
   <files>
-	<file src="D:\GIT\Assembly-Software\Assembly.Software.Utilities\Assembly.Software.Utilities\bin\Release\Assembly.Software.Profile.dll" target="lib" />
+	<file src="Assembly.Software.Utilities\lib\**" target="lib" />
   </files>
   
 </package>
