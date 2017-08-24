@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Assembly.Software.Utilities</id>
+    <version>1.0.0</version>
+    <authors>Raz Davidovich</authors>
+    <owners>Raz Davidovich</owners>
+    <licenseUrl>https://github.com/razdavidovich/Assembly-Software</licenseUrl>
+    <projectUrl>https://github.com/razdavidovich/Assembly-Software</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A set of useful utilities to shorten the development time and create a basic toolset for Assembly Software Developers</description>
+    <releaseNotes>Initial package release to nuget.org.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Assembly Software Utilities</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  
+  <files>
+	<file src="D:\GIT\Assembly-Software\Assembly.Software.Utilities\Assembly.Software.Utilities\bin\Release\Assembly.Software.Profile.dll" target="lib" />
+  </files>
+  
+</package>
