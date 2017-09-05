@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:util="http:⁄⁄schemas.microsoft.com⁄wix⁄UtilExtension">
+  
+	<Product Id="*" Name="Magma OPC client WCF" Language="1033" Version="1.0.0.0" Manufacturer="Magma Group" UpgradeCode="bd3b4f5e-072f-4cbe-a648-6b4fbb2d630d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="This service hosts a WCF service which uses Lighthouse Systems's OPC DA client to read/write from/top OPC servers" />
+    <Media Id="1" Cabinet="ProductComponent.cab" EmbedCab="yes" />
+
+    <Property Id="REINSTALLMODE" Value="amus"/>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_InstallDir" />
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+    <UI>
+      
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">
+      </Publish>
+    </UI>
+
+   
+    
+    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+        <Directory Id="Magma" Name="Magma Group">
+          <Directory Id="INSTALLFOLDER" Name="Magma WCF OPC Service">
+            
+            <Component Id="ServiceFile1" Guid="{2F6D8901-E07D-42DC-AE59-6A7069271760}">
+              <File Id="Magma.WCF.Services.OpcServiceHost.exe.config" Name="Magma.WCF.Services.OpcServiceHost.exe.config" Source="..\Magma.WCF.Services.OpcServiceHost\bin\debug\Magma.WCF.Services.OpcServiceHost.exe.config" Vital="yes" KeyPath="yes" DiskId="1"/>
+
+            
+              
+              
+              <RemoveFile Id="RemoveConfig" On="uninstall" Name="Magma.WCF.Services.OpcServiceHost.exe.config"/>
+            </Component>
+
+            <Component Id="ServiceFile2" Guid="{17A15301-5846-42A8-93DD-470A1327E90E}">
+              <File Id="Lighthouse.Opc.ClientLibrary.dll" Name="Lighthouse.Opc.ClientLibrary.dll" Source="..\Magma.WCF.Services.OpcServiceHost\bin\Debug\Lighthouse.Opc.ClientLibrary.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveLightDll" On="uninstall" Name="Lighthouse.Opc.ClientLibrary.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile3" Guid="{F058001E-95CF-47D4-92C8-643616340814}">
+              <File Id="Magma.WCF.Service.Opc.dll" Name="Magma.WCF.Service.Opc.dll" Source="..\Magma.WCF.Services.OpcServiceHost\bin\Debug\Magma.WCF.Service.Opc.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveServiceDll" On="uninstall" Name="Magma.WCF.Service.Opc.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile4" Guid="{DA4AA565-1BD9-49FB-89C3-886D3024CDE7}">
+              <File Id="Magma.WCF.Services.Logging.dll" Name="Magma.WCF.Services.Logging.dll" Source="..\Magma.WCF.Services.OpcServiceHost\bin\Debug\Magma.WCF.Services.Logging.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveLoggingDll" On="uninstall" Name="Magma.WCF.Services.Logging.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile5" Guid="{73EB5126-40EB-4AC8-90A9-12F60A31350C}">
+              <File Id="OpcDaNetUA.Net4.dll" Name="OpcDaNetUA.Net4.dll" Source="..\Magma.WCF.Services.OpcServiceHost\bin\Debug\OpcDaNetUA.Net4.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveNet4Dll" On="uninstall" Name="OpcDaNetUA.Net4.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile6" Guid="{391B2D2C-038A-4331-9B75-671F59C1F83D}">
+              <File Id="OpcDaNetUaOption.Net4.dll" Name="OpcDaNetUaOption.Net4.dll" Source="..\Magma.WCF.Services.OpcServiceHost\bin\Debug\OpcDaNetUaOption.Net4.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveOptionDll" On="uninstall" Name="OpcDaNetUaOption.Net4.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile7" Guid="{F51830B1-C404-4A0B-93CD-A2688B8E7E98}">
+              <File Id="OpcNetBase.Net4.dll" Name="OpcNetBase.Net4.dll" Source="..\Magma.WCF.Services.OpcServiceHost\bin\Debug\OpcNetBase.Net4.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveBaseDll" On="uninstall" Name="OpcNetBase.Net4.dll"/>
+            </Component>
+            
+            <Component Id="ServiceFile8" Guid="{7EE12BD3-B869-4CDB-9530-46AE3C72F891}">
+
+           
+              
+
+              <File Id="Magma.WCF.Services.OpcServiceHost.exe" Name="Magma.WCF.Services.OpcServiceHost.exe" Source="$(var.Magma.WCF.Services.OpcServiceHost.TargetPath)" KeyPath="yes" Vital="yes" DiskId="1" Checksum="yes"/>
+              <ServiceInstall
+                Id="ServiceInstaller"
+                Type="ownProcess"
+                Vital="yes"
+                Name="Magma.WCF.Services.OpcServiceHost.exe"
+                DisplayName="Magma's OPC WCF Service host"
+                Description="This service hosts a WCF service which uses Lighthouse Systems's OPC DA client to read/write from/top OPC servers"
+                Start="auto"
+                Account="LocalSystem"
+                ErrorControl="normal"
+                Interactive="no"
+             >
+              </ServiceInstall>
+              <ServiceControl Id="StartService" Stop="both" Remove="uninstall" Name="Magma.WCF.Services.OpcServiceHost.exe" Wait="yes" />
+              <RemoveFile Id="RemoveExe" On="uninstall" Name="Magma.WCF.Services.OpcServiceHost.exe"/>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Id="ProductComponents">
+      <ComponentRef Id="ServiceFile1"/>
+      <ComponentRef Id="ServiceFile2"/>
+      <ComponentRef Id="ServiceFile3"/>
+      <ComponentRef Id="ServiceFile4"/>
+      <ComponentRef Id="ServiceFile5"/>
+      <ComponentRef Id="ServiceFile6"/>
+      <ComponentRef Id="ServiceFile7"/>
+      <ComponentRef Id="ServiceFile8"/>
+    </ComponentGroup>
+
+    <Feature Id="ProductFeature" Title="SMS.Service.Setup" Level="1">
+      <ComponentGroupRef  Id="ProductComponents" />
+    </Feature>
+
+  </Product>
+
+
+</Wix>

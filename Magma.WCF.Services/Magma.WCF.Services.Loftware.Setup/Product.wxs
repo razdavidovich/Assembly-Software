@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="{07BCA10A-517C-4318-AF97-7E3E6385E21D}" Name="Magma WCF Services Loftware" Language="1033" Version="1.0.0.0" Manufacturer="Magma Group" UpgradeCode="6b639cdb-7620-4c0a-98d2-3e14814e6cb7">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    
+    <MediaTemplate />
+    <Property Id="REINSTALLMODE" Value="amus"/>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_InstallDir" />
+
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication"></Publish>
+    </UI>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="Magma" Name="Magma Group">
+          <Directory Id="INSTALLFOLDER" Name="Magma WCF Services Loftware" >
+            <Component Id="ServiceFile1" Guid="{E00F4367-15D6-4DFE-85D2-F5928A1093A9}">
+              <File Id="Assembly.Software.Loftware.dll" Name="Assembly.Software.Loftware.dll" Source="$(var.Magma.WCF.Services.LoftwareServiceHost.TargetDir)\Assembly.Software.Loftware.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveLoftwareDll" On="uninstall" Name="Assembly.Software.Loftware.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile2" Guid="{84C82C50-4BCE-4893-8F5E-D24313723CBA}">
+              <File Id="Loftware.LLMControl.dll" Name="Loftware.LLMControl.dll" Source="$(var.Magma.WCF.Services.LoftwareServiceHost.TargetDir)\Loftware.LLMControl.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveLLMControlDll" On="uninstall" Name="Loftware.LLMControl.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile3" Guid="{E123A7DD-2B15-4DB2-86C7-FEF90ED333B8}">
+              <File Id="Magma.WCF.Services.Loftware.dll" Name="Magma.WCF.Services.Loftware.dll" Source="$(var.Magma.WCF.Services.LoftwareServiceHost.TargetDir)\Magma.WCF.Services.Loftware.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveServicesLoftwaredll" On="uninstall" Name="Magma.WCF.Services.Loftware.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile4" Guid="{70C7C6C7-2F96-4E97-81CD-EF523A1D3D8D}">
+              <File Id="Magma.WCF.Services.Logging.dll" Name="Magma.WCF.Services.Logging.dll" Source="$(var.Magma.WCF.Services.LoftwareServiceHost.TargetDir)\Magma.WCF.Services.Logging.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveServicesLoggingdll" On="uninstall" Name="Magma.WCF.Services.Logging.dll"/>
+            </Component>
+
+            <Component Id="ServiceFile5" Guid="{B2A8E768-C98E-4B63-9375-254CF8E8951A}">
+              <File Id="Magma.WCF.Services.LoftwareServiceHost.exe.config" Name="Magma.WCF.Services.LoftwareServiceHost.exe.config" Source="$(var.Magma.WCF.Services.LoftwareServiceHost.TargetDir)\Magma.WCF.Services.LoftwareServiceHost.exe.config" Vital="yes" KeyPath="yes" DiskId="1"/>
+              <RemoveFile Id="RemoveServiceConfig" On="uninstall" Name="Magma.WCF.Services.LoftwareServiceHost.exe.config"/>
+            </Component>
+
+            
+            <Component Id="ServiceFile6" Guid="{4098FB2B-9173-48FD-959B-33448460B46B}">
+
+              <File Id="Magma.WCF.Services.LoftwareServiceHost.exe" Name="Magma.WCF.Services.LoftwareServiceHost.exe" Source="$(var.Magma.WCF.Services.LoftwareServiceHost.TargetPath)" KeyPath="yes" Vital="yes" DiskId="1" Checksum="yes"/>
+              <ServiceInstall
+                Id="ServiceInstaller"
+                Type="ownProcess"
+                Vital="yes"
+                Name="Magma.WCF.Services.LoftwareServiceHost.exe"
+                DisplayName="Magma WCF Loftware Service"
+                Description="Service which handles the external UI actions to the station software"
+                Start= "demand"
+                Account="LocalSystem"
+                ErrorControl="normal"
+                Interactive="no">
+              </ServiceInstall>
+              <ServiceControl Id="StartService"  Stop="both" Remove="uninstall" Name="Magma.WCF.Services.LoftwareServiceHost.exe" Wait="yes" />
+              <RemoveFile Id="RemoveServiceExe" On="uninstall" Name="Magma.WCF.Services.LoftwareServiceHost.exe"/>
+            </Component>
+              
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Id="ProductComponents">
+      <ComponentRef Id="ServiceFile1"/>
+      <ComponentRef Id="ServiceFile2"/>
+      <ComponentRef Id="ServiceFile3"/>
+      <ComponentRef Id="ServiceFile4"/>
+      <ComponentRef Id="ServiceFile5"/>
+      <ComponentRef Id="ServiceFile6"/>
+    </ComponentGroup>
+    
+		<Feature Id="ProductFeature" Title="Magma WCF Services Loftware" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+</Wix>

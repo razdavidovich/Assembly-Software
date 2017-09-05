@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Seagull.BarTender.Print" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Seagull.BarTender.Print" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Result">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Timeout" />
+      <xs:enumeration value="Failure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+</xs:schema>

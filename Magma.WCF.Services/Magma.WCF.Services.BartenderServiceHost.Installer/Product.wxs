@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Magma.WCF.Services.BartenderServiceHost" Language="1033" Version="1.0.0.0" Manufacturer="Magma MES" UpgradeCode="48dc066c-97cc-4512-8fa3-52bbe195e075">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Magma.WCF.Services.BartenderServiceHost" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Magma.WCF.Services.BartenderServiceHost" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">			
+			<Component Id="ProductComponent">
+				<!--<File Id="Insert dll name" Name="Insert dll name again" Source="Insert path to dll" Vital="yes" KeyPath="no" DiskId="1"/>-->
+				<File Id="Magma.WCF.Services.Bartender.Tester.exe" Name="Magma.WCF.Services.Bartender.Tester.exe" Source="..\Magma,WCF.Services.Bartender.Tester\bin\Debug\Magma.WCF.Services.Bartender.Tester.exe" Vital="yes" KeyPath="yes" DiskId="1"/>
+				<ServiceInstall
+					Id="ServiceInstaller"
+					Type="ownProcess"
+					Vital="yes"
+					Name="Magma.WCF.Services.BartenderServiceHost"
+					DisplayName="Magma's Bartender WCF service host"
+					Description="This service hosts a WCF service which uses Seagull Bartender Print's .NET SDK to print"
+					Start="auto"
+					Account="LocalSystem"
+					ErrorControl="ignore"
+					Interactive="no"
+              >
+				</ServiceInstall>
+				<ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="MgmBtWcfSvc" Wait="yes" />
+			</Component>
+
+		</ComponentGroup>
+	</Fragment>
+</Wix>
