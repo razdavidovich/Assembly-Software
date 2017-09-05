@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LoftwareService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="LoftwareTCP_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="LoftwareNamedPipe_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Assembly.Software.Loftware" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Loftware.Common" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILoftwareService_PrintLabelHashtable_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLabelHashtable" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_PrintLabelHashtable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLabelHashtableResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_PrintLabelDatatable_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLabelDatatable" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_PrintLabelDatatable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLabelDatatableResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_PrintLabelDictionary_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLabelDictionary" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_PrintLabelDictionary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLabelDictionaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetServerStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerStatus" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetServerStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetPrintersList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrintersList" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetPrintersList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrintersListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetLabelsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLabelsList" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetLabelsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLabelsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetLabelFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLabelFields" />
+  </wsdl:message>
+  <wsdl:message name="ILoftwareService_GetLabelFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLabelFieldsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILoftwareService">
+    <wsdl:operation name="PrintLabelHashtable">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/PrintLabelHashtable" message="tns:ILoftwareService_PrintLabelHashtable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/PrintLabelHashtableResponse" message="tns:ILoftwareService_PrintLabelHashtable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDatatable">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/PrintLabelDatatable" message="tns:ILoftwareService_PrintLabelDatatable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/PrintLabelDatatableResponse" message="tns:ILoftwareService_PrintLabelDatatable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDictionary">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/PrintLabelDictionary" message="tns:ILoftwareService_PrintLabelDictionary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/PrintLabelDictionaryResponse" message="tns:ILoftwareService_PrintLabelDictionary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/GetServerStatus" message="tns:ILoftwareService_GetServerStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/GetServerStatusResponse" message="tns:ILoftwareService_GetServerStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintersList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/GetPrintersList" message="tns:ILoftwareService_GetPrintersList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/GetPrintersListResponse" message="tns:ILoftwareService_GetPrintersList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/GetLabelsList" message="tns:ILoftwareService_GetLabelsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/GetLabelsListResponse" message="tns:ILoftwareService_GetLabelsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoftwareService/GetLabelFields" message="tns:ILoftwareService_GetLabelFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoftwareService/GetLabelFieldsResponse" message="tns:ILoftwareService_GetLabelFields_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILoftwareService" type="tns:ILoftwareService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PrintLabelHashtable">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelHashtable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDatatable">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelDatatable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDictionary">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelDictionary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerStatus">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/GetServerStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintersList">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/GetPrintersList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelsList">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/GetLabelsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelFields">
+      <soap:operation soapAction="http://tempuri.org/ILoftwareService/GetLabelFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LoftwareTCP" type="tns:ILoftwareService">
+    <wsp:PolicyReference URI="#LoftwareTCP_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="PrintLabelHashtable">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelHashtable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDatatable">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelDatatable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDictionary">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelDictionary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerStatus">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetServerStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintersList">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetPrintersList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelsList">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetLabelsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelFields">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetLabelFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LoftwareNamedPipe" type="tns:ILoftwareService">
+    <wsp:PolicyReference URI="#LoftwareNamedPipe_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="PrintLabelHashtable">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelHashtable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDatatable">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelDatatable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLabelDictionary">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/PrintLabelDictionary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerStatus">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetServerStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrintersList">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetPrintersList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelsList">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetLabelsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLabelFields">
+      <soap12:operation soapAction="http://tempuri.org/ILoftwareService/GetLabelFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoftwareService">
+    <wsdl:port name="BasicHttpBinding_ILoftwareService" binding="tns:BasicHttpBinding_ILoftwareService">
+      <soap:address location="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/" />
+    </wsdl:port>
+    <wsdl:port name="LoftwareTCP" binding="tns:LoftwareTCP">
+      <soap12:address location="net.tcp://localhost:8734/Runtime/Magma.WCF.Services.Loftware/LoftwareService/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8734/Runtime/Magma.WCF.Services.Loftware/LoftwareService/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="LoftwareNamedPipe" binding="tns:LoftwareNamedPipe">
+      <soap12:address location="net.pipe://localhost/Runtime/Magma.WCF.Services.Loftware/LoftwareService/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://localhost/Runtime/Magma.WCF.Services.Loftware/LoftwareService/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>TCTDOMAIN0\Administrator</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

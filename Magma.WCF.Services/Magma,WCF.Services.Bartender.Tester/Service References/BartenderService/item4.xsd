@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Magma.WCF.Services.Bartender" elementFormDefault="qualified" targetNamespace="http://Magma.WCF.Services.Bartender" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Runtime/Magma.WCF.Services.Bartender/BartenderService/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8733/Runtime/Magma.WCF.Services.Bartender/BartenderService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Seagull.BarTender.Print" />
+  <xs:element name="PrintLabel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jobname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="waitForCompletionTimeoutInSeconds" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="formatName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="printerName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parameters" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="identicalCopiesOfLabel" type="xs:int" />
+        <xs:element minOccurs="0" name="numberSerializedLabels" type="xs:int" />
+        <xs:element minOccurs="0" name="missingParamBehaviour" type="tns:MissingParamBehaviour" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="MissingParamBehaviour">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ignore" />
+      <xs:enumeration value="Fail" />
+      <xs:enumeration value="SetEmptyString" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MissingParamBehaviour" nillable="true" type="tns:MissingParamBehaviour" />
+  <xs:element name="PrintLabelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PrintLabelResult" nillable="true" type="tns:BTPrintResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BTPrintResponse">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Messages" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Seagull.BarTender.Print" minOccurs="0" name="Result" type="q3:Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BTPrintResponse" nillable="true" type="tns:BTPrintResponse" />
+</xs:schema>

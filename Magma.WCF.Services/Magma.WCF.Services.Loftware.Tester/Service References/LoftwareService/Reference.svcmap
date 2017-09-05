@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="74518369-0065-45e0-a285-c6d65872f4ff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="92460b30-f837-47f2-95ca-12f7adfd7757" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="0cf3b0b6-7337-4509-a6b8-27d4e62f9d10" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="31e0d4e7-2e02-4179-943c-da6e04555154" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="6e090540-ff2f-4508-b862-072ce42094b6" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+    <MetadataFile FileName="Assembly.Software.Loftware.xsd" MetadataType="Schema" ID="5d05b5a7-13f7-47fa-8e5d-a7d934a41086" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+    <MetadataFile FileName="Loftware.Common.xsd" MetadataType="Schema" ID="6ccec696-c17e-4468-a381-de73cfd7b520" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+    <MetadataFile FileName="System.Data.xsd" MetadataType="Schema" ID="3f46cf44-6e3d-4bf8-8e2d-1a8e63384237" SourceId="1" SourceUrl="http://localhost:8733/Runtime/Magma.WCF.Services.Loftware/LoftwareService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
