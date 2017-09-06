@@ -344,7 +344,22 @@ namespace Magma.WCF.Services.Opc
                 return false;
             }
         }
+        public bool WriteSingleArrayValue(string tagAddress, string commaSepereatedValues, string parameterProgId, bool simulate)
+        {
 
+            try
+            {
+                // Convert the comma seperated values to an array
+                Array arrayToWrite = commaSepereatedValues.Split(',');
+                return WriteSingleValue(tagAddress, arrayToWrite, parameterProgId, simulate);
+            }
+            catch (Exception ex)
+            {
+                Logger.Write(ex);
+
+                return false;
+            }
+        }
         /// <summary>
         /// Write several values to several OPC tags.
         /// In this case, some writes can succeed and some may fail. See WriteValuesResult for details
