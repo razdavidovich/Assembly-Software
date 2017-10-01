@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace Magma.WCF.Services.Opc.Tester
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         private OPCTester_Service.OpcServiceClient OPCTest = new OPCTester_Service.OpcServiceClient("BasicHttpBinding_IOpcService");
 
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
