@@ -33,6 +33,15 @@ namespace Magma.WCF.Services.Opc
         /// <param name="parameterProgId">prog ID of the OPC server - pass string.Empty or null to use the opc prog ID defined in the service config</param>
         /// <returns></returns>
         [OperationContract]
+        bool WriteSingleArrayValue(string tagAddress, string commaSepereatedValues, string parameterProgId, bool simulate);
+
+        /// <summary>
+        /// writes several values to several tags
+        /// </summary>
+        /// <param name="values">a dictionary of values to write. The keys are the tag address, the values are the values to write</param>
+        /// <param name="parameterProgId">prog ID of the OPC server - pass string.Empty or null to use the opc prog ID defined in the service config</param>
+        /// <returns></returns>
+        [OperationContract]
         WriteValuesResult WriteValues(Dictionary<string, object> values, string parameterProgId, bool simulate);
 
         /// <summary>
