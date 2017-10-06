@@ -1,6 +1,6 @@
 ﻿namespace Magma.WCF.Services.Opc.Tester
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ReadCacheOrDevice = new System.Windows.Forms.RadioButton();
             this.ReadDeviceOrCache = new System.Windows.Forms.RadioButton();
@@ -229,7 +230,7 @@
             this.ultraCheckEditor1.Text = "Default ProgID. Uncheck and Insert Custom ProgID.";
             this.ultraCheckEditor1.CheckedChanged += new System.EventHandler(this.ultraCheckEditor1_CheckedChanged);
             // 
-            // Form1
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -251,8 +252,9 @@
             this.Controls.Add(this.ultraLabel1);
             this.Controls.Add(this.ReadCacheOrDevice);
             this.Controls.Add(this.ReadDeviceOrCache);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmMain";
+            this.Text = "WCF OPC Tester";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCtrlProgID)).EndInit();
