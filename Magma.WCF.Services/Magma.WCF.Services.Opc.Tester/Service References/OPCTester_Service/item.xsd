@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Magma.WCF.Services.OpcService" elementFormDefault="qualified" targetNamespace="http://Magma.WCF.Services.OpcService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8735/Runtime/Magma.WCF.Services.Opc/OpcService/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="WriteSingleValue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tagAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="value" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="parameterProgId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="simulate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WriteSingleValueResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WriteSingleValueResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WriteValues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="values" nillable="true" type="q1:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="parameterProgId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="simulate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WriteValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WriteValuesResult" nillable="true" type="tns:WriteValuesResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="WriteValuesResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WriteTagsStatusList" nillable="true" type="q2:ArrayOfKeyValueOfstringExceptionU6ho3Bhd" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WriteValuesResult" nillable="true" type="tns:WriteValuesResult" />
+  <xs:element name="ReadSingleValue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tagAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="readDevice" type="xs:boolean" />
+        <xs:element minOccurs="0" name="parameterProgId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadSingleValueResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReadSingleValueResult" nillable="true" type="tns:OpcValue" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="OpcValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Quality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TagAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OpcValue" nillable="true" type="tns:OpcValue" />
+  <xs:element name="ReadValues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagAddressList" nillable="true" type="q3:ArrayOfstring" />
+        <xs:element minOccurs="0" name="readDevice" type="xs:boolean" />
+        <xs:element minOccurs="0" name="parameterProgId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReadValuesResult" nillable="true" type="tns:ArrayOfOpcValue" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfOpcValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OpcValue" nillable="true" type="tns:OpcValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOpcValue" nillable="true" type="tns:ArrayOfOpcValue" />
+  <xs:element name="GetServiceMode">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceModeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetServiceModeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagsToExcludeOnSimulateWrite">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagsToExcludeOnSimulateWriteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTagsToExcludeOnSimulateWriteResult" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

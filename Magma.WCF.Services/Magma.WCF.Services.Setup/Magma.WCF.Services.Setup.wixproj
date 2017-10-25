@@ -38,6 +38,14 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Magma.WCF.Services.Opc.Tester\Magma.WCF.Services.Opc.Tester.csproj">
+      <Name>Magma.WCF.Services.Opc.Tester</Name>
+      <Project>{0a295ed5-cf40-4f8a-ab3c-44458dba21d2}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\Magma.WCF.Services.OpcServiceHost\Magma.WCF.Services.OpcServiceHost.csproj">
       <Name>Magma.WCF.Services.OpcServiceHost</Name>
       <Project>{673699d4-220c-4a05-9206-839035d490a0}</Project>

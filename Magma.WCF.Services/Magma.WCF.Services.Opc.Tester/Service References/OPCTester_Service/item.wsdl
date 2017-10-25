@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://Magma.WCF.Services.OpcService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://Magma.WCF.Services.OpcService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://Magma.WCF.Services.OpcService/Imports">
+      <xsd:import schemaLocation="http://localhost:8735/Runtime/Magma.WCF.Services.Opc/OpcService/?xsd=xsd0" namespace="http://Magma.WCF.Services.OpcService" />
+      <xsd:import schemaLocation="http://localhost:8735/Runtime/Magma.WCF.Services.Opc/OpcService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8735/Runtime/Magma.WCF.Services.Opc/OpcService/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8735/Runtime/Magma.WCF.Services.Opc/OpcService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOpcService_WriteSingleValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:WriteSingleValue" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_WriteSingleValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WriteSingleValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_WriteValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:WriteValues" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_WriteValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WriteValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_ReadSingleValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSingleValue" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_ReadSingleValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSingleValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_ReadValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadValues" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_ReadValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_GetServiceMode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceMode" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_GetServiceMode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceModeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_GetTagsToExcludeOnSimulateWrite_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsToExcludeOnSimulateWrite" />
+  </wsdl:message>
+  <wsdl:message name="IOpcService_GetTagsToExcludeOnSimulateWrite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsToExcludeOnSimulateWriteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOpcService">
+    <wsdl:operation name="WriteSingleValue">
+      <wsdl:input wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/WriteSingleValue" message="tns:IOpcService_WriteSingleValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/WriteSingleValueResponse" message="tns:IOpcService_WriteSingleValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteValues">
+      <wsdl:input wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/WriteValues" message="tns:IOpcService_WriteValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/WriteValuesResponse" message="tns:IOpcService_WriteValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSingleValue">
+      <wsdl:input wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/ReadSingleValue" message="tns:IOpcService_ReadSingleValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/ReadSingleValueResponse" message="tns:IOpcService_ReadSingleValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadValues">
+      <wsdl:input wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/ReadValues" message="tns:IOpcService_ReadValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/ReadValuesResponse" message="tns:IOpcService_ReadValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceMode">
+      <wsdl:input wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/GetServiceMode" message="tns:IOpcService_GetServiceMode_InputMessage" />
+      <wsdl:output wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/GetServiceModeResponse" message="tns:IOpcService_GetServiceMode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagsToExcludeOnSimulateWrite">
+      <wsdl:input wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/GetTagsToExcludeOnSimulateWrite" message="tns:IOpcService_GetTagsToExcludeOnSimulateWrite_InputMessage" />
+      <wsdl:output wsaw:Action="http://Magma.WCF.Services.OpcService/IOpcService/GetTagsToExcludeOnSimulateWriteResponse" message="tns:IOpcService_GetTagsToExcludeOnSimulateWrite_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

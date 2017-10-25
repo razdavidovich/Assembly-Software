@@ -64,10 +64,7 @@
             </Component>
             
             <Component Id="ServiceFile8" Guid="{7EE12BD3-B869-4CDB-9530-46AE3C72F891}">
-
-           
-              
-
+            
               <File Id="Magma.WCF.Services.OpcServiceHost.exe" Name="Magma.WCF.Services.OpcServiceHost.exe" Source="$(var.Magma.WCF.Services.OpcServiceHost.TargetPath)" KeyPath="yes" Vital="yes" DiskId="1" Checksum="yes"/>
               <ServiceInstall
                 Id="ServiceInstaller"
@@ -85,11 +82,92 @@
               <ServiceControl Id="StartService" Stop="both" Remove="uninstall" Name="Magma.WCF.Services.OpcServiceHost.exe" Wait="yes" />
               <RemoveFile Id="RemoveExe" On="uninstall" Name="Magma.WCF.Services.OpcServiceHost.exe"/>
             </Component>
+            <Directory Id="INSTALLFOLDER" Name="OPC Tester">
+              <!--Tester Directory Start-->
+             
+              <Component Id="TesterFile1" Guid="{1351FD74-0159-4FFE-A62C-4A9810554258}">
+                <File Id="Infragistics4.Win.v14.2.dll" Name="Infragistics4.Win.v14.2.dll" Source="..\Magma.WCF.Services.Opc.Tester\bin\Debug\Infragistics4.Win.v14.2.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+                <RemoveFile Id="RemoveInfragisticsWin" On="uninstall" Name="Infragistics4.Win.v14.2.dll"/>
+              </Component>
+
+              <Component Id="TesterFile2" Guid="{C3DCA462-6B4B-4DAF-B268-AFCB88302988}">
+                <File Id="Infragistics4.Win.UltraWinEditors.v14.2.dll" Name="Infragistics4.Win.UltraWinEditors.v14.2.dll" Source="..\Magma.WCF.Services.Opc.Tester\bin\Debug\Infragistics4.Win.UltraWinEditors.v14.2.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+                <RemoveFile Id="RemoveInfragisticsultraWinEditors" On="uninstall" Name="Infragistics4.Win.UltraWinEditors.v14.2.dll"/>
+              </Component>
+
+              <Component Id="TesterFile3" Guid="{12C9D46D-8478-48EF-84BD-D5840A2294F9}">
+                <File Id="Infragistics4.Win.Misc.v14.2.dll" Name="Infragistics4.Win.Misc.v14.2.dll" Source="..\Magma.WCF.Services.Opc.Tester\bin\Debug\Infragistics4.Win.Misc.v14.2.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+                <RemoveFile Id="RemoveInfragisticsWinMisc" On="uninstall" Name="Infragistics4.Win.Misc.v14.2.dll"/>
+              </Component>
+
+              <Component Id="TesterFile4" Guid="{4F02F393-9C7D-4FE4-92E7-A8ED90538439}">
+                <File Id="Infragistics4.Shared.v14.2.dll" Name="Infragistics4.Shared.v14.2.dll" Source="..\Magma.WCF.Services.Opc.Tester\bin\Debug\Infragistics4.Shared.v14.2.dll" Vital="yes" KeyPath="yes" DiskId="1"/>
+                <RemoveFile Id="RemoveInfragisticsShared" On="uninstall" Name="Infragistics4.Shared.v14.2.dll"/>
+              </Component>
+
+              <Component Id ="TesterFile5" Guid ="{E73954B7-B251-48B3-BB6D-6D2573E503F6}">
+                <File Id="Magma.WCF.Services.Opc.Tester.exe.config" Name ="Magma.WCF.Services.Opc.Tester.exe.config" Source ="..\Magma.WCF.Services.Opc.Tester\bin\Debug\Magma.WCF.Services.Opc.Tester.exe.config" Vital ="yes" KeyPath ="yes" DiskId ="1"/>
+                <RemoveFile Id="RemoveTesterConfig" On ="uninstall" Name="Magma.WCF.Services.Opc.Tester.exe.config"/>
+              </Component>
+
+              <Component Id="TesterSetupFile1" Guid="{9057F07F-6E5E-4A20-9D16-65FEC77F9A08}">
+
+                <File Id="Magma.WCF.Services.Opc.Tester.exe" Name="Magma.WCF.Services.Opc.Tester.exe" Source="..\Magma.WCF.Services.Opc.Tester\bin\Debug\Magma.WCF.Services.Opc.Tester.exe" KeyPath="yes" Vital="yes" DiskId="1" Checksum="yes"/>
+                <RemoveFile Id="RemoveTesterExe" On="uninstall" Name="DVS Reports.exe"/>
+
+              </Component>
+              
+            </Directory> <!--Tester Directory End-->
+            
           </Directory>
         </Directory>
       </Directory>
     </Directory>
 
+    <!--ShortCut in Desktop-->
+    <Directory Id="DesktopFolder" Name="Desktop">
+      <Component Id="ApplicationShortcutDesktop" Guid="{B30E7827-72BE-4043-B8CC-0D002A63F17A}">
+        <Shortcut Id="ApplicationDesktopShortcut"
+           Name="OPC Tester"
+          Target="[INSTALLFOLDER]Magma.WCF.Services.Opc.Tester.exe"
+           WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+        <RegistryValue
+          Root="HKCU"
+          Key="Software/MyAppName"
+          Name="installed"
+          Type="integer"
+          Value="1"
+          KeyPath="yes"/>
+      </Component>
+    </Directory>
+    <!--ShortCut in start Menu-->
+    <Directory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="OPC Tester"/>
+    </Directory>
+
+    
+      <DirectoryRef Id="ApplicationProgramsFolder">
+        <Component Id="ApplicationShortcut1" Guid="{F8DFD13A-6627-4CF5-8C1F-F4CFAB83E423}">
+          <Shortcut Id="ApplicationStartMenuShortcut"
+                 Name="OPC Tester"
+                 Description="OPC Tester"
+                 Target="[INSTALLFOLDER]Magma.WCF.Services.Opc.Tester.exe"
+                 WorkingDirectory="INSTALLFOLDER"/>
+          <Shortcut Id="UninstallProduct"
+                      Name="Uninstall OPC Tester"
+                      Target="[SystemFolder]msiexec.exe"
+                      Arguments="/x [ProductCode]"
+                      Description="Uninstalls OPC Tester app" />
+
+          <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+          <RegistryValue Root="HKCU" Key="Software\Magma Group\OPC Tester" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        </Component>
+      </DirectoryRef>
+
+    
+
+   
     <ComponentGroup Id="ProductComponents">
       <ComponentRef Id="ServiceFile1"/>
       <ComponentRef Id="ServiceFile2"/>
@@ -101,8 +179,19 @@
       <ComponentRef Id="ServiceFile8"/>
     </ComponentGroup>
 
+    <ComponentGroup Id="TesterProductComponents">
+      <ComponentRef Id="TesterFile1"/>
+      <ComponentRef Id="TesterFile2"/>
+      <ComponentRef Id="TesterFile3"/>
+      <ComponentRef Id="TesterFile4"/>
+      <ComponentRef Id="TesterFile5"/>
+      <ComponentRef Id="TesterSetupFile1"/>
+      
+    </ComponentGroup>
+
     <Feature Id="ProductFeature" Title="SMS.Service.Setup" Level="1">
       <ComponentGroupRef  Id="ProductComponents" />
+      <ComponentGroupRef  Id="TesterProductComponents" />
     </Feature>
 
   </Product>
