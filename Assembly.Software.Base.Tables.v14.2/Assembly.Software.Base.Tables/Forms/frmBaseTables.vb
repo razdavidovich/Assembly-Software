@@ -14,6 +14,8 @@ Public Class frmBaseTables
 
     Private prmOptionalSQLParams As SqlParameter()
     Private objOptionalValues As Object()
+    Private intPrevGroupID As Integer 'To store the previous Group ID in case if we shift to new group with out saving the current
+    Private strPrevTabID As String 'To store the previous Tab ID in case if we shift to new group with out saving the current
 
 #End Region
 
@@ -565,6 +567,7 @@ Public Class frmBaseTables
         'Get the number of groups from the config file
         Dim intTableCount As Integer = CType(Config.ReadConfigValue("NoOfTables", "Group_" & intGroupID.ToString, "BaseTables"), Integer)
 
+        If tabBaseTable.Tabs.Count > 0 Then strPrevTabID = tabBaseTable.ActiveTab.Key
         'Clear all tabs
         tabBaseTable.Tabs.Clear()
 
@@ -865,10 +868,20 @@ Public Class frmBaseTables
 
         'Build the group ID and table ID for the keys retrival
         'Get the Group ID
-        Dim intGroupID As Integer = CType(trvTables.SelectedNodes(0).Key.Substring(trvTables.SelectedNodes(0).Key.LastIndexOf("_") + 1), Integer)
-
+        Dim intGroupID As Integer
+        Dim strActiveTab As String
+        If intPrevGroupID <> 0 Then 'Checks whether this is being called with in the same group or from different group
+            intGroupID = intPrevGroupID
+        Else
+            intGroupID = CType(trvTables.SelectedNodes(0).Key.Substring(trvTables.SelectedNodes(0).Key.LastIndexOf("_") + 1), Integer)
+        End If
+        If Not IsNothing(strPrevTabID) Then
+            strActiveTab = strPrevTabID
+        Else
+            strActiveTab = tabBaseTable.ActiveTab.Key.ToString
+        End If
         'Get the keys string from the config file
-        Dim strKeys As String = Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_Keys", "Group_" + intGroupID.ToString, "BaseTables")
+        Dim strKeys As String = Config.ReadConfigValue(strActiveTab + "_Keys", "Group_" + intGroupID.ToString, "BaseTables")
 
         'Return the splited values
         Return Split(strKeys, ",", , CompareMethod.Text)
@@ -887,10 +900,21 @@ Public Class frmBaseTables
 
         'Build the group ID and table ID for the stored procedure name retrival
         'Get the Group ID
-        Dim intGroupID As Integer = CType(trvTables.SelectedNodes(0).Key.Substring(trvTables.SelectedNodes(0).Key.LastIndexOf("_") + 1), Integer)
+        Dim intGroupID As Integer
+        Dim strActiveTab As String
 
+        If intPrevGroupID <> 0 Then 'Checks whether this is from the same group or from the different group
+            intGroupID = intPrevGroupID
+        Else
+            intGroupID = CType(trvTables.SelectedNodes(0).Key.Substring(trvTables.SelectedNodes(0).Key.LastIndexOf("_") + 1), Integer)
+        End If
+        If IsNothing(tabBaseTable.ActiveTab) Then
+            strActiveTab = strPrevTabID
+        Else
+            strActiveTab = tabBaseTable.ActiveTab.Key.ToString
+        End If
         'Return the stored procedure name
-        Return Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_SP", "Group_" + intGroupID.ToString, "BaseTables")
+        Return Config.ReadConfigValue(strActiveTab + "_SP", "Group_" + intGroupID.ToString, "BaseTables")
 
     End Function
 
@@ -956,6 +980,7 @@ Public Class frmBaseTables
         'Load the table tabs 
         LoadTablesInGroup(intGroupID)
 
+        intPrevGroupID = intGroupID 'Assigning the previous Group ID so that when they shift to new ones i need to save if the old ones are modified
     End Sub
 
     Private Sub tabBaseTable_ActiveTabChanged(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinTabControl.ActiveTabChangedEventArgs) Handles tabBaseTable.ActiveTabChanged
@@ -969,6 +994,7 @@ Public Class frmBaseTables
         Dim intMultiColumnComboID As Integer
         Dim strColumnCaption As String
         Dim blnHideColumn As Boolean
+        Dim strActiveTab As String
 
         'Get the Group ID
         Dim intGroupID As Integer = CType(trvTables.SelectedNodes(0).Key.Substring(trvTables.SelectedNodes(0).Key.LastIndexOf("_") + 1), Integer)
@@ -976,21 +1002,26 @@ Public Class frmBaseTables
         With e.Layout
             'Clear all previous value lists
             .ValueLists.Clear()
+            If IsNothing(tabBaseTable.ActiveTab) Then
+                strActiveTab = "Table_1"
+            Else
+                strActiveTab = tabBaseTable.ActiveTab.Key.ToString
+            End If
 
             'Loop the grid columns and load combobox if needed
             For I As Integer = 0 To .Bands(0).Columns.Count - 1
 
                 blnHideColumn = "False"
                 'Get the combo ID from the config file
-                intComboID = Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_Col_" + I.ToString + "_ComboID", "Group_" + intGroupID.ToString, "BaseTables")
-                intMultiColumnComboID = Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_Col_" + I.ToString + "_MultiColumnComboID", "Group_" + intGroupID.ToString, "BaseTables")
-                strColumnCaption = Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_Col_" + I.ToString + "_Caption", "Group_" + intGroupID.ToString, "BaseTables")
+                intComboID = Config.ReadConfigValue(strActiveTab + "_Col_" + I.ToString + "_ComboID", "Group_" + intGroupID.ToString, "BaseTables")
+                intMultiColumnComboID = Config.ReadConfigValue(strActiveTab + "_Col_" + I.ToString + "_MultiColumnComboID", "Group_" + intGroupID.ToString, "BaseTables")
+                strColumnCaption = Config.ReadConfigValue(strActiveTab + "_Col_" + I.ToString + "_Caption", "Group_" + intGroupID.ToString, "BaseTables")
 
                 'Read the hide column setting for the current column
-                blnHideColumn = _
-                IIf(Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_Col_" + I.ToString + "_Hide", "Group_" + intGroupID.ToString, "BaseTables") = Nothing _
-                                    , blnHideColumn, _
-                                   Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_Col_" + I.ToString + "_Hide", "Group_" + intGroupID.ToString, "BaseTables"))
+                blnHideColumn =
+                IIf(Config.ReadConfigValue(strActiveTab + "_Col_" + I.ToString + "_Hide", "Group_" + intGroupID.ToString, "BaseTables") = Nothing _
+                                    , blnHideColumn,
+                                   Config.ReadConfigValue(strActiveTab + "_Col_" + I.ToString + "_Hide", "Group_" + intGroupID.ToString, "BaseTables"))
 
                 'Set the column caption
                 If Not (strColumnCaption Is Nothing) Then e.Layout.Bands(0).Columns(I).Header.Caption = strColumnCaption
@@ -1034,7 +1065,7 @@ Public Class frmBaseTables
         End With
 
         'Set the Auto column fit property (1 to Autofit) 
-        e.Layout.AutoFitStyle = Convert.ToInt32(Config.ReadConfigValue(tabBaseTable.ActiveTab.Key.ToString + "_AutoFitColumns", "Group_" + intGroupID.ToString, "BaseTables"))
+        e.Layout.AutoFitStyle = Convert.ToInt32(Config.ReadConfigValue(strActiveTab + "_AutoFitColumns", "Group_" + intGroupID.ToString, "BaseTables"))
 
     End Sub
 
@@ -1062,11 +1093,18 @@ Public Class frmBaseTables
     Private Sub tabBaseTable_ActiveTabChanging(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinTabControl.ActiveTabChangingEventArgs) Handles tabBaseTable.ActiveTabChanging
         'Check if there is data to save
         If CheckIfNeedToSave() Then
+
             'Ask the user if he wish to save the data
             If General.DisplayMessageBoxLTR(7) = MsgBoxResult.Yes Then
                 'Save the data
                 If SaveData() Then
-                    ReloadCurrentTable(tabBaseTable.ActiveTab.Key)
+                    grdBaseTable.ActiveRow.Update()
+                    If IsNothing(tabBaseTable.ActiveTab) Then
+                        ReloadCurrentTable("1")
+                    Else
+                        ReloadCurrentTable(tabBaseTable.ActiveTab.Key)
+                    End If
+
 
                     'Display a success message
                     General.DisplayMessageBoxLTR(5)
@@ -1093,6 +1131,8 @@ Public Class frmBaseTables
 
                 'Check if any changes were made
                 If CheckIfNeedToSave() Then
+                    intPrevGroupID = 0 'Clearing the old Group ID 
+                    strPrevTabID = Nothing 'Clearing the old Tab ID Active
                     If SaveData() Then
                         'Reload the current table to the tables repository
                         ReloadCurrentTable(tabBaseTable.SelectedTab.Key)
