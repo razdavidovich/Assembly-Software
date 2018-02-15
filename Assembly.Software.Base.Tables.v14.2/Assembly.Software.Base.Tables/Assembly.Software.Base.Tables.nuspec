@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Assembly.Software.Base.Tables.V12.2</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Raz Davidovich</authors>
+    <owners>Assembly Software LTD</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Assembly Software Base Table Editor for Windows Forms application</description>
+    <releaseNotes>This release uses Ingragistics V12.2 components.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Assembly Software Base Tables</tags>
+  </metadata>
+</package>
