@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Assembly.Software.Loftware</id>
+    <version>1.0.0</version>
+    <authors>Raz Davidovich</authors>
+    <owners>Raz Davidovich</owners>
+    <licenseUrl>https://github.com/razdavidovich/Assembly-Software</licenseUrl>
+    <projectUrl>https://github.com/razdavidovich/Assembly-Software</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Loftware control wrapper for Assembly Software Developers</description>
+    <releaseNotes>Initial package release to nuget.org.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>Assembly Software Loftware</tags>
+  </metadata>
+</package>
