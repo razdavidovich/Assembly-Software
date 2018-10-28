@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Assembly.Software.Base.Tables.V14.2</id>
-    <version>14.2.1</version>
+    <id>Assembly.Software.Loftware</id>
+    <version>1.0.0</version>
     <authors>Raz Davidovich</authors>
     <owners>Raz Davidovich</owners>
     <licenseUrl>https://github.com/razdavidovich/Assembly-Software</licenseUrl>
     <projectUrl>https://github.com/razdavidovich/Assembly-Software</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Assembly Software Base Table Editor for Windows Forms application</description>
-    <releaseNotes>This release uses Ingragistics V14.2 components.</releaseNotes>
+    <description>A Loftware control wrapper for Assembly Software Developers</description>
+    <releaseNotes>Initial package release to nuget.org.</releaseNotes>
     <copyright>Copyright 2018</copyright>
-    <tags>Assembly Software Base Tables</tags>
+    <tags>Assembly Software Loftware</tags>
   </metadata>
 </package>
