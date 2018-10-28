@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Assembly.Software.Base.Tables.V12.2</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <id>Assembly.Software.Base.Tables.V14.2</id>
+    <version>14.2.1</version>
     <authors>Raz Davidovich</authors>
-    <owners>Assembly Software LTD</owners>
+    <owners>Raz Davidovich</owners>
+    <licenseUrl>https://github.com/razdavidovich/Assembly-Software</licenseUrl>
+    <projectUrl>https://github.com/razdavidovich/Assembly-Software</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Assembly Software Base Table Editor for Windows Forms application</description>
-    <releaseNotes>This release uses Ingragistics V12.2 components.</releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <releaseNotes>This release uses Ingragistics V14.2 components.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
     <tags>Assembly Software Base Tables</tags>
   </metadata>
 </package>

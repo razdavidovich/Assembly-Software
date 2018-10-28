@@ -8,7 +8,7 @@
     <licenseUrl>https://github.com/razdavidovich/Assembly-Software</licenseUrl>
     <projectUrl>https://github.com/razdavidovich/Assembly-Software</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A Crystal Reports classto shorten the development time and create a basic toolset for Assembly Software Developers</description>
+    <description>A WCF logger for Assembly Software Developers</description>
     <releaseNotes>Initial package release to nuget.org.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Assembly.Software.WCF.Services.Logging</tags>
