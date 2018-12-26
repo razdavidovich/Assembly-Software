@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsLoftwareServer.vb" />
+    <Compile Include="clsPrintBatchLabels.vb" />
     <Compile Include="clsPrinter.vb" />
     <Compile Include="clsPrintLabel.vb" />
     <Compile Include="clsRowPrintStatus.vb" />
