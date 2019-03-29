@@ -176,7 +176,7 @@ Public Class clsPrintBatchLabels
                     AppentPrintJobFromDataRow(LlmClient, intSerializedLabels, intNumberOfCopies, row, lngErrorNumber, strErrorDescription)
                 Next
 
-                Dim clsPrintStatus As clsRowPrintStatus = PrintBatchLabels(LlmClient, lngErrorNumber, strErrorDescription)
+                Dim clsPrintStatus As clsRowPrintStatus = PrintBatchLabels(LlmClient, lngErrorNumber, strErrorDescription, dtlParams.Rows(0))
                 clsListOfPrintStatuses.Add(clsPrintStatus)
 
             End If
@@ -233,6 +233,7 @@ Public Class clsPrintBatchLabels
     Private Function PrintBatchLabels(ByVal LlmClient As LoftClient,
                                         ByRef lngErrorNumber As Long,
                                         ByRef strErrorDescription As String,
+                                        ByVal drParams As DataRow,
                                         Optional ByRef llmPrintJobResponse As PrintJobResponse = Nothing) As clsRowPrintStatus
         '****************************************************************************
         '* NAME:            PrintBatchLabels                                        *
@@ -248,7 +249,7 @@ Public Class clsPrintBatchLabels
             LlmClient.PrintJob(llmPrintJobResponse)
 
             'Build and return the row print status
-            Dim clsPrintStatus As New clsRowPrintStatus(llmPrintJobResponse.StatusCode, llmPrintJobResponse.XmlData, Nothing)
+            Dim clsPrintStatus As New clsRowPrintStatus(llmPrintJobResponse.StatusCode, llmPrintJobResponse.XmlData, drParams.ItemArray)
 
             'Return the job status
             Return clsPrintStatus

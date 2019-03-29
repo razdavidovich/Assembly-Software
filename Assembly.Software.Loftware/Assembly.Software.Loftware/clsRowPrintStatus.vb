@@ -18,13 +18,16 @@ Public Class clsRowPrintStatus
         Me.objSubmitedData = objSubmitedData
 
         'Replace DBNull value with null value in the submitted values object array
+
         Dim index As Integer = 0
+
         For Each Item As Object In Me.objSubmitedData
-            If IsDBNull(Item) Then
-                Me.objSubmitedData(index) = String.Empty
-            End If
-            index += 1
-        Next
+                If IsDBNull(Item) Then
+                    Me.objSubmitedData(index) = String.Empty
+                End If
+                index += 1
+            Next
+
 
     End Sub
 
