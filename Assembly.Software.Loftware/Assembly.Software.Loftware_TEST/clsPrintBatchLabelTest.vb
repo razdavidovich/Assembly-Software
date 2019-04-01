@@ -86,7 +86,7 @@ Public Class clsPrintBatchLabelTest
         Assert.AreEqual(strErrorDescriptionExpected, strErrorDescription)
 
         'Check the return value for the 
-        Assert.AreEqual(2, lstReturnedStatus.Count(), "The number of returned status objects does not match the expected number")
+        Assert.AreEqual(1, lstReturnedStatus.Count(), "The number of returned status objects does not match the expected number")
         Assert.AreEqual(LLMStatusCodes.Success, lstReturnedStatus(0).PrintedJobStatus, "The expected status of the first print command does not match")
         Assert.AreEqual(LLMStatusCodes.Success, lstReturnedStatus(1).PrintedJobStatus, "The expected status of the first print command does not match")
 
