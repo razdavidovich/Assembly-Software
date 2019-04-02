@@ -25,6 +25,15 @@ namespace Magma.WCF.Services.Loftware
         List<clsRowPrintStatus>  PrintLabelDictionary(int intPrinterID,string strLabelName,int intSerializedLabels,int intNumberOfCopies, Dictionary<string,string>  dictParams);
 
         [OperationContract]
+        List<clsRowPrintStatus> PrintBatchLabelHashtable(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Hashtable htlParams);
+
+        [OperationContract]
+        List<clsRowPrintStatus> PrintBatchLabelDatatable(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, DataTable dtlParams);
+
+        [OperationContract]
+        List<clsRowPrintStatus> PrintBatchLabelDictionary(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams);
+
+        [OperationContract]
         clsLoftwareServer.ServerStatusType GetServerStatus();
 
         [OperationContract]

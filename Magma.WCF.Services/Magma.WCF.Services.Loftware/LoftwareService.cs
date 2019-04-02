@@ -131,6 +131,101 @@ namespace Magma.WCF.Services.Loftware
                 throw ex;
             }
         }
+
+        public List<clsRowPrintStatus> PrintBatchLabelHashtable(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Hashtable htlParams)
+        {
+            //****************************************************************
+            // Name : PrintBatchLabelHashtable
+            // Description :  Prints Batch labels for a given hash tables 
+            // Written By : Ananda
+            // Date : 04/02/2019
+            //****************************************************************
+
+            long lngErrorNumber = 0;
+            string strErrorDescription = "";
+
+            //Create a loftware wrapper class
+            clsPrintBatchLabels  objPrintLabel = new clsPrintBatchLabels();
+            Logger.Write("Call to " + MethodBase.GetCurrentMethod().Name + " with the following parameters: LPS IP address/Host name = " + LoftwareServerIPAddress +
+                     " port number = " + LoftwareServerPort.ToString() + "Printer ID = " + intPrinterID.ToString() + " Label name = " + strLabelName +
+                     " serialized copies = " + intSerializedLabels.ToString() + " duplicates = " + intNumberOfCopies.ToString(), EventLogEntryType.Information, Logger.SeverityTypes.Information);
+
+            try
+            {
+                return objPrintLabel.PrintLabel(LoftwareServerIPAddress, LoftwareServerPort, intPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies, htlParams, ref lngErrorNumber, ref strErrorDescription);
+            }
+            catch (Exception ex)
+            {
+                //Log entry to the log procedure
+                Logger.Write(ex.ToString(), EventLogEntryType.Error, Logger.SeverityTypes.Error);
+                throw ex;
+            }
+
+        }
+
+        public List<clsRowPrintStatus> PrintBatchLabelDatatable(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, System.Data.DataTable dtlParams)
+        {
+            //****************************************************************
+            // Name : PrintBatchLabelDatatable
+            // Description :  Prints Batch of labels for a given Datatable
+            // Written By : Ananda
+            // Date : 04/02/2019
+            //****************************************************************
+            long lngErrorNumber = 0;
+            string strErrorDescription = "";
+
+            //Create a Loftware wrapper class
+            clsPrintBatchLabels  objPrintLabel = new clsPrintBatchLabels();
+
+            //Log entry to the log procedure
+            Logger.Write("Call to " + MethodBase.GetCurrentMethod().Name + " with the following parameters: LPS IP address/Host name = " + LoftwareServerIPAddress +
+                         " port number = " + LoftwareServerPort.ToString() + "Printer ID = " + intPrinterID.ToString() + " Label name = " + strLabelName +
+                         " serialized copies = " + intSerializedLabels.ToString() + " duplicates = " + intNumberOfCopies.ToString(), EventLogEntryType.Information, Logger.SeverityTypes.Information);
+
+            try
+            {
+                return objPrintLabel.PrintLabel(LoftwareServerIPAddress, LoftwareServerPort, intPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies, dtlParams, ref lngErrorNumber, ref strErrorDescription);
+            }
+            catch (Exception ex)
+            {
+                //Log entry to the log procedure
+                Logger.Write(ex.ToString(), EventLogEntryType.Error, Logger.SeverityTypes.Error);
+                throw ex;
+            }
+        }
+
+        public List<clsRowPrintStatus> PrintBatchLabelDictionary(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams)
+        {
+            //****************************************************************
+            // Name : PrintBatchLabelDictionary
+            // Description :  Prints Batch of labels for a given Dictionary
+            // Written By : Ananda
+            // Date : 04/02/2019
+            //****************************************************************
+
+            long lngErrorNumber = 0;
+            string strErrorDescription = "";
+
+            //Create a Loftware wrapper class
+            clsPrintBatchLabels  objPrintLabel = new clsPrintBatchLabels();
+
+            //Log entry to the log procedure
+            Logger.Write("Call to " + MethodBase.GetCurrentMethod().Name + " with the following parameters: LPS IP address/Host name = " + LoftwareServerIPAddress +
+                         " port number = " + LoftwareServerPort.ToString() + "Printer ID = " + intPrinterID.ToString() + " Label name = " + strLabelName +
+                         " serialized copies = " + intSerializedLabels.ToString() + " duplicates = " + intNumberOfCopies.ToString(), EventLogEntryType.Information, Logger.SeverityTypes.Information);
+
+            try
+            {
+                return objPrintLabel.PrintLabel(LoftwareServerIPAddress, LoftwareServerPort, intPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies, dictParams, ref lngErrorNumber, ref strErrorDescription);
+            }
+            catch (Exception ex)
+            {
+                //Log entry to the log procedure
+                Logger.Write(ex.ToString(), EventLogEntryType.Error, Logger.SeverityTypes.Error);
+                throw ex;
+            }
+        }
+
         public clsLoftwareServer.ServerStatusType GetServerStatus()
         {
             //****************************************************************

@@ -69,16 +69,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly.Software.Loftware">
-      <HintPath>..\..\..\Complied Assemblies\Assembly.Software.Loftware.dll</HintPath>
+      <HintPath>..\..\..\..\CODE\Assembly.Software.Loftware.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly.Software.Profile">
-      <HintPath>..\..\..\Complied Assemblies\Assembly.Software.Profile.dll</HintPath>
+    <Reference Include="Assembly.Software.Profile, Version=1.1.1633.19859, Culture=neutral, PublicKeyToken=fd06130e3dc317dd">
+      <HintPath>..\packages\Assembly.Software.Loftware.1.1.0\lib\Assembly.Software.Profile.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly.Software.Utilities">
-      <HintPath>..\..\..\Complied Assemblies\Assembly.Software.Utilities.dll</HintPath>
+    <Reference Include="Assembly.Software.Utilities, Version=1.0.1.0, Culture=neutral, PublicKeyToken=b43ab951e5782031, processorArchitecture=MSIL">
+      <HintPath>..\packages\Assembly.Software.Utilities.1.0.1\lib\net20\Assembly.Software.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="Loftware.LLMControl">
-      <HintPath>..\..\..\Complied Assemblies\Loftware.LLMControl.dll</HintPath>
+    <Reference Include="Loftware.LLMControl, Version=9.1.2.3, Culture=neutral, PublicKeyToken=5ff26857767b191a">
+      <HintPath>..\packages\Assembly.Software.Loftware.LLMControl.9.2.1\lib\net40\Loftware.LLMControl.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Magma.WCF.Services.Logging\Magma.WCF.Services.Logging.csproj">
