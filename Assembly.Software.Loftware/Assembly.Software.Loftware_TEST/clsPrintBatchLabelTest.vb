@@ -67,7 +67,7 @@ Public Class clsPrintBatchLabelTest
         Dim strLoftwareServerIPAddress As String = "192.168.2.182"
         Dim strLoftwareServerPort As Integer = 2723
         Dim strPrinterID As Integer = 4
-        Dim strLabelName As String = "Delube.lwl"
+        Dim strLabelName As String = "ORG_PLASSON\sfol\MST_REHAU.LWL"
         Dim intSerializedLabels As Integer = 2
         Dim intNumberOfCopies As Integer = 1
         Dim dtlParams As DataTable = GenerateDataTable()
