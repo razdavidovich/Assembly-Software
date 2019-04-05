@@ -68,8 +68,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly.Software.Loftware">
-      <HintPath>..\..\..\..\CODE\Assembly.Software.Loftware.dll</HintPath>
+    <Reference Include="Assembly.Software.Loftware, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Assembly.Software.Loftware.1.1.1\lib\net40\Assembly.Software.Loftware.dll</HintPath>
     </Reference>
     <Reference Include="Assembly.Software.Profile, Version=1.1.1633.19859, Culture=neutral, PublicKeyToken=fd06130e3dc317dd">
       <HintPath>..\packages\Assembly.Software.Loftware.1.1.0\lib\Assembly.Software.Profile.dll</HintPath>
@@ -105,6 +105,10 @@
       <Project>{B4230E0E-49E0-434E-9648-DFAD6F37544E}</Project>
       <Name>Magma.WCF.Services.Logging</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Assembly.Software.Profile.dll" />
+    <Content Include="lib\Assembly.Software.Profile.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
