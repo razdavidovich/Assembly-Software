@@ -146,6 +146,7 @@ Public Class clsPrintBatchLabels
 
         Dim LlmClient As New LoftClient()
         Dim clsListOfPrintStatuses As New List(Of clsRowPrintStatus)
+        Dim intCount As Integer = 1
 
         'Check if the client is already login
         If LlmClient.LoggedIn() Then
@@ -174,6 +175,10 @@ Public Class clsPrintBatchLabels
                 'Loop and print every row in the datatable
                 For Each row As DataRow In dtlParams.Rows
                     AppentPrintJobFromDataRow(LlmClient, intSerializedLabels, intNumberOfCopies, row, lngErrorNumber, strErrorDescription)
+                    If intCount <> dtlParams.Rows.Count Then
+                        LlmClient.AppendJob()
+                    End If
+                    intCount += 1
                 Next
 
                 Dim clsPrintStatus As clsRowPrintStatus = PrintBatchLabels(LlmClient, lngErrorNumber, strErrorDescription, dtlParams.Rows(0))
@@ -221,7 +226,7 @@ Public Class clsPrintBatchLabels
                 End Try
             Next
 
-            LlmClient.AppendJob()
+
 
         Catch ex As Exception
             Throw New Exception("Exception at: " + System.Reflection.MethodBase.GetCurrentMethod.Name + " Please check the inner exception or details", ex)
