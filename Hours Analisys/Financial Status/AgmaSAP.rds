@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>AgmaSAP</Name>
+  <DataSourceID>64b007e3-d267-49c0-906b-5f5a645cfe1a</DataSourceID>
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=MGSERVER;Initial Catalog=AGMA07</ConnectString>
+  </ConnectionProperties>
+</RptDataSource>

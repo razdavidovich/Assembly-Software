@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>AssemblySAP</Name>
+  <DataSourceID>c71ff800-c5e5-4d28-9b4a-d753b15a7159</DataSourceID>
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=MGSERVER;Initial Catalog=ASSEMBLY07</ConnectString>
+  </ConnectionProperties>
+</RptDataSource>
