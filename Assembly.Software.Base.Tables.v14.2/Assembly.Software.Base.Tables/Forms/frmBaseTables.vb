@@ -960,7 +960,7 @@ Public Class frmBaseTables
             Case "System.DateTime"
                 Return SqlDbType.DateTime
             Case "System.Decimal"
-                Return SqlDbType.DateTime
+                Return SqlDbType.Decimal
             Case "System.Double"
                 Return SqlDbType.Float
             Case "System.Int32"
