@@ -17,6 +17,7 @@ Public Class CrystalReportContainer
         HTML
         PDF
         EXCEL
+        PRINT
     End Enum
 
 #End Region
@@ -158,7 +159,6 @@ Public Class CrystalReportContainer
 
                 ' Check if Excel
                 If m_eReportFormat = ReportFormat.EXCEL Then
-
                     ' Create Excel options and define stream
                     Dim objExcelOptions As ExcelFormatOptions = New ExcelFormatOptions
                     objExcelOptions.ExcelAreaGroupNumber = 1
@@ -167,14 +167,15 @@ Public Class CrystalReportContainer
                     objExcelOptions.ExcelUseConstantColumnWidth = False
                     l_objReportdocument.ExportOptions.FormatOptions = objExcelOptions
                     l_objReportdocument.ExportToHttpResponse(ExportFormatType.Excel, Response, False, "Exported Report")
-                Else ' PDF option
+                ElseIf m_eReportFormat = ReportFormat.PDF Then ' PDF option
                     l_objReportdocument.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, False, "Exported Report")
+                ElseIf m_eReportFormat = ReportFormat.PRINT Then ' Print option
+                    l_objReportdocument.PrintOptions.PrinterName = Config.ReadASPConfigValue("PrinterName", m_strReportApplication)
+                    l_objReportdocument.PrintToPrinter(1, False, 0, 0)
                 End If
 
                 ' write stream
                 Response.End()
-
-
             End If
 
         Catch ex As Exception
