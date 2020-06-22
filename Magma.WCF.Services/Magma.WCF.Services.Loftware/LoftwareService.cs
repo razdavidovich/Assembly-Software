@@ -163,7 +163,7 @@ namespace Magma.WCF.Services.Loftware
 
         }
 
-        public List<clsRowPrintStatus> PrintBatchLabelDatatable(int intPrinterID, string strLabelName, int intSerializedLabels, int intNumberOfCopies, System.Data.DataTable dtlParams)
+        public List<clsRowPrintStatus> PrintBatchLabelDatatable(int intPrinterID,List<string> lstLabelName, int intSerializedLabels, int intNumberOfCopies, System.Data.DataTable dtlParams)
         {
             //****************************************************************
             // Name : PrintBatchLabelDatatable
@@ -179,12 +179,12 @@ namespace Magma.WCF.Services.Loftware
 
             //Log entry to the log procedure
             Logger.Write("Call to " + MethodBase.GetCurrentMethod().Name + " with the following parameters: LPS IP address/Host name = " + LoftwareServerIPAddress +
-                         " port number = " + LoftwareServerPort.ToString() + "Printer ID = " + intPrinterID.ToString() + " Label name = " + strLabelName +
+                         " port number = " + LoftwareServerPort.ToString() + "Printer ID = " + intPrinterID.ToString() + " Label name = " + "" +
                          " serialized copies = " + intSerializedLabels.ToString() + " duplicates = " + intNumberOfCopies.ToString(), EventLogEntryType.Information, Logger.SeverityTypes.Information);
 
             try
             {
-                return objPrintLabel.PrintLabel(LoftwareServerIPAddress, LoftwareServerPort, intPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies, dtlParams, ref lngErrorNumber, ref strErrorDescription);
+                return objPrintLabel.PrintLabel(LoftwareServerIPAddress, LoftwareServerPort, intPrinterID, lstLabelName, intSerializedLabels, intNumberOfCopies, dtlParams, ref lngErrorNumber, ref strErrorDescription);
             }
             catch (Exception ex)
             {
