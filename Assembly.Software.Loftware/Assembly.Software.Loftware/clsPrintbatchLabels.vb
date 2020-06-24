@@ -233,22 +233,20 @@ Public Class clsPrintBatchLabels
                 'Login to the LPS
                 LlmClient.Login(strLoftwareServerIPAddress, intLoftwareServerPort)
 
-
-
-                'Set the printer to print to
-                LlmClient.PrinterNumber = intPrinterID
-
-                LlmClient.Duplicates = intNumberOfCopies
-                LlmClient.Quantity = intSerializedLabels
-
-                'Set the job name
-                LlmClient.JobName = "Job_" + Now.ToString("dd-MM-yyyy_HH-mm-ss")
-
                 'Loop and print every row in the datatable
                 For Each row As DataRow In dtlParams.Rows
                     For Each label In lstLabelName
                         'Load the label
                         LlmClient.GetLabel(label)
+
+                        'Set the printer to print to
+                        LlmClient.PrinterNumber = intPrinterID
+
+                        LlmClient.Duplicates = intNumberOfCopies
+                        LlmClient.Quantity = intSerializedLabels
+
+                        'Set the job name
+                        LlmClient.JobName = "Job_" + Now.ToString("dd-MM-yyyy_HH-mm-ss")
 
                         AppentPrintJobFromDataRow(LlmClient, intSerializedLabels, intNumberOfCopies, row, lngErrorNumber, strErrorDescription)
                         If intCount <> dtlParams.Rows.Count Then
