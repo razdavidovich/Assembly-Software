@@ -220,6 +220,7 @@ Public Class clsPrintBatchLabels
         Dim LlmClient As New LoftClient()
         Dim clsListOfPrintStatuses As New List(Of clsRowPrintStatus)
         Dim intCount As Integer = 1
+        Dim intConditionCount As Integer
 
         'Check if the client is already login
         If LlmClient.LoggedIn() Then
@@ -232,10 +233,12 @@ Public Class clsPrintBatchLabels
 
                 'Login to the LPS
                 LlmClient.Login(strLoftwareServerIPAddress, intLoftwareServerPort)
-
+                intConditionCount = dtlParams.Rows.Count * lstLabelName.Count
                 'Loop and print every row in the datatable
                 For Each row As DataRow In dtlParams.Rows
                     For Each label In lstLabelName
+
+
                         'Load the label
                         LlmClient.GetLabel(label)
 
@@ -249,9 +252,10 @@ Public Class clsPrintBatchLabels
                         LlmClient.JobName = "Job_" + Now.ToString("dd-MM-yyyy_HH-mm-ss")
 
                         AppentPrintJobFromDataRow(LlmClient, intSerializedLabels, intNumberOfCopies, row, lngErrorNumber, strErrorDescription)
-                        If intCount <> dtlParams.Rows.Count Then
+                        If intCount <> intConditionCount Then
                             LlmClient.AppendJob()
                         End If
+
                         intCount += 1
                     Next
                 Next

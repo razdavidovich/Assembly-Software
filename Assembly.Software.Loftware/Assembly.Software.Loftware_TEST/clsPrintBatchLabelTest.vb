@@ -68,7 +68,7 @@ Public Class clsPrintBatchLabelTest
         Dim strLoftwareServerPort As Integer = 2723
         Dim strPrinterID As Integer = 4
         Dim strLabelName As String = "DELUBE.LWL"
-        Dim intSerializedLabels As Integer = 2
+        Dim intSerializedLabels As Integer = 1
         Dim intNumberOfCopies As Integer = 1
         Dim dtlParams As DataTable = GenerateDataTable()
         Dim lngErrorNumber As Long = 0
@@ -78,8 +78,8 @@ Public Class clsPrintBatchLabelTest
         Dim lstReturnedStatus As List(Of clsRowPrintStatus)
         Dim lstLabel As New List(Of String)
 
-        lstLabel.Add("Delube.Lwl")
-        lstLabel.Add("Delube.Lwl")
+        lstLabel.Add("LPN_Format.Lwl")
+        lstLabel.Add("Mec_Format.Lwl")
         'Execute the tests
         ' lstReturnedStatus = target.PrintLabel(strLoftwareServerIPAddress, strLoftwareServerPort, strPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies,
         ' dtlParams, lngErrorNumber, strErrorDescription)
