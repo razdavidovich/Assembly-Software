@@ -198,7 +198,85 @@ Public Class clsPrintBatchLabels
         Return clsListOfPrintStatuses
 
     End Function
+    Public Function PrintLabel(ByVal strLoftwareServerIPAddress As String,
+                                                ByVal intLoftwareServerPort As Integer,
+                                                ByVal intPrinterID As Integer,
+                                                ByVal lstLabelName As List(Of String),
+                                                ByVal intSerializedLabels As Integer,
+                                                ByVal intNumberOfCopies As Integer,
+                                                ByVal dtlParams As DataTable,
+                                                Optional ByRef lngErrorNumber As Long = 0,
+                                                Optional ByRef strErrorDescription As String = vbNullString) As List(Of clsRowPrintStatus)
+        '****************************************************************************
+        '* NAME:            PrintLabelFromDataTable                                 *
+        '* DESCRIPTION:     Print Label From Given Data Table                       *
+        '*                                                                          *
+        '* WRITTEN BY:      Raz Davidovich                                          *
+        '* DATE:            29/04/2010                                              *
+        '* UPDATED BY:      Raz Davidovich                                          *
+        '* UPDATE DATE:     29/04/2010                                              *
+        '****************************************************************************
 
+        Dim LlmClient As New LoftClient()
+        Dim clsListOfPrintStatuses As New List(Of clsRowPrintStatus)
+        Dim intCount As Integer = 1
+        Dim intConditionCount As Integer
+
+        'Check if the client is already login
+        If LlmClient.LoggedIn() Then
+            LlmClient.Logout()
+        End If
+
+        Try
+            ' Exits Sub If There Is no Rows To Print
+            If (dtlParams.Rows.Count > 0) Then
+
+                'Login to the LPS
+                LlmClient.Login(strLoftwareServerIPAddress, intLoftwareServerPort)
+                intConditionCount = dtlParams.Rows.Count * lstLabelName.Count
+                'Loop and print every row in the datatable
+                For Each row As DataRow In dtlParams.Rows
+                    For Each label In lstLabelName
+
+
+                        'Load the label
+                        LlmClient.GetLabel(label)
+
+                        'Set the printer to print to
+                        LlmClient.PrinterNumber = intPrinterID
+
+                        LlmClient.Duplicates = intNumberOfCopies
+                        LlmClient.Quantity = intSerializedLabels
+
+                        'Set the job name
+                        LlmClient.JobName = "Job_" + Now.ToString("dd-MM-yyyy_HH-mm-ss")
+
+                        AppentPrintJobFromDataRow(LlmClient, intSerializedLabels, intNumberOfCopies, row, lngErrorNumber, strErrorDescription)
+                        If intCount <> intConditionCount Then
+                            LlmClient.AppendJob()
+                        End If
+
+                        intCount += 1
+                    Next
+                Next
+
+                Dim clsPrintStatus As clsRowPrintStatus = PrintBatchLabels(LlmClient, lngErrorNumber, strErrorDescription, dtlParams.Rows(0))
+                clsListOfPrintStatuses.Add(clsPrintStatus)
+
+            End If
+
+        Catch ex As Exception
+            Throw New Exception("Exception at: " + System.Reflection.MethodBase.GetCurrentMethod.Name + " Please check the inner exception or details", ex)
+
+        Finally
+            LlmClient.Logout()
+            LlmClient = Nothing
+        End Try
+
+        'Return the list of print statuses
+        Return clsListOfPrintStatuses
+
+    End Function
     Private Function AppentPrintJobFromDataRow(ByVal LlmClient As LoftClient,
                                         ByVal intSerializedLabels As Integer,
                                         ByVal intNumberOfCopies As Integer,

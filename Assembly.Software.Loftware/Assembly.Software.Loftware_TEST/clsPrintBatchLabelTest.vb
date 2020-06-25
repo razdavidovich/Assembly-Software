@@ -67,8 +67,8 @@ Public Class clsPrintBatchLabelTest
         Dim strLoftwareServerIPAddress As String = "192.168.2.182"
         Dim strLoftwareServerPort As Integer = 2723
         Dim strPrinterID As Integer = 4
-        Dim strLabelName As String = "ORG_PLASSON\sfol\MST_REHAU.LWL"
-        Dim intSerializedLabels As Integer = 2
+        Dim strLabelName As String = "DELUBE.LWL"
+        Dim intSerializedLabels As Integer = 1
         Dim intNumberOfCopies As Integer = 1
         Dim dtlParams As DataTable = GenerateDataTable()
         Dim lngErrorNumber As Long = 0
@@ -76,11 +76,18 @@ Public Class clsPrintBatchLabelTest
         Dim strErrorDescription As String = String.Empty
         Dim strErrorDescriptionExpected As String = String.Empty
         Dim lstReturnedStatus As List(Of clsRowPrintStatus)
+        Dim lstLabel As New List(Of String)
 
+        lstLabel.Add("LPN_Format.Lwl")
+        lstLabel.Add("Mec_Format.Lwl")
         'Execute the tests
-        lstReturnedStatus = target.PrintLabel(strLoftwareServerIPAddress, strLoftwareServerPort, strPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies,
-                                        dtlParams, lngErrorNumber, strErrorDescription)
+        ' lstReturnedStatus = target.PrintLabel(strLoftwareServerIPAddress, strLoftwareServerPort, strPrinterID, strLabelName, intSerializedLabels, intNumberOfCopies,
+        ' dtlParams, lngErrorNumber, strErrorDescription)
 
+
+
+        lstReturnedStatus = target.PrintLabel(strLoftwareServerIPAddress, strLoftwareServerPort, strPrinterID, lstLabel, intSerializedLabels, intNumberOfCopies,
+                                        dtlParams, lngErrorNumber, strErrorDescription)
         'Check the expected error numbers and error description
         Assert.AreEqual(lngErrorNumberExpected, lngErrorNumber)
         Assert.AreEqual(strErrorDescriptionExpected, strErrorDescription)
