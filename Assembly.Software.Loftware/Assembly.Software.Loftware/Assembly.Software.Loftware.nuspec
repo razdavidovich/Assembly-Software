@@ -2,15 +2,14 @@
 <package >
   <metadata>
     <id>Assembly.Software.Loftware</id>
-    <version>1.1.1</version>
+    <version>1.2.1</version>
     <authors>Raz Davidovich</authors>
     <owners>Raz Davidovich</owners>
-    <licenseUrl>https://github.com/razdavidovich/Assembly-Software</licenseUrl>
     <projectUrl>https://github.com/razdavidovich/Assembly-Software</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Loftware control wrapper for Assembly Software Developers</description>
-    <releaseNotes>Added batch print capabilities to the software.</releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <releaseNotes>Added batch print for multiple labels capabilities to the software.</releaseNotes>
+    <copyright>Copyright 2020</copyright>
     <tags>Assembly Software Loftware</tags>
   </metadata>
 </package>
