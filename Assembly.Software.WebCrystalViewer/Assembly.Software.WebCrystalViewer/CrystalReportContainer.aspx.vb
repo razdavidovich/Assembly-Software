@@ -13,6 +13,7 @@ Public Class CrystalReportContainer
 
 #Region "Class Definitions"
 
+    Private clsCrystalReport As ClsCrystalReport = New ClsCrystalReport()
     Enum ReportFormat
         HTML
         PDF
@@ -145,7 +146,7 @@ Public Class CrystalReportContainer
             clsApplicationLogFile.WriteLog(l_strServerName)
 
             ' set database credentials
-            SetReportConnectionInfo(l_objReportdocument, l_strServerName, l_strDatabaseName, l_strUserName, l_strPassword)
+            clsCrystalReport.SetReportConnectionInfo(l_objReportdocument, l_strServerName, l_strDatabaseName, l_strUserName, l_strPassword)
 
             'Set the CR viewer report source to the report document 
             CrystalReportViewerMain.ReportSource = l_objReportdocument
