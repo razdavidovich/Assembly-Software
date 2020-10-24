@@ -73,7 +73,11 @@ Public Class CrystalReportPrinter
             End If
 
             If Not crystalReportPrinterRequestJson.PrinterName Is Nothing Then
-                l_strPrinterName = crystalReportPrinterRequestJson.PrinterName
+                If Not String.IsNullOrEmpty(crystalReportPrinterRequestJson.PrinterName) Then
+                    l_strPrinterName = crystalReportPrinterRequestJson.PrinterName
+                Else
+                    l_strPrinterName = Config.ReadASPConfigValue("PrinterName", crystalReportPrinterRequestJson.ReportApplication)
+                End If
             Else
                 l_strPrinterName = Config.ReadASPConfigValue("PrinterName", crystalReportPrinterRequestJson.ReportApplication)
             End If
@@ -126,7 +130,7 @@ Public Class CrystalReportPrinterRequestJson
     Public Property ReportApplication As String
     Public Property ReportTypeName As String
     Public Property ReportParameters As JObject()
-    Public Property PrinterName As String
+    Public Property PrinterName As Object
 End Class
 
 Public Class CrystalReportPrinterError
