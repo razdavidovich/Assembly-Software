@@ -8,7 +8,7 @@
 <head runat="server">
     <title>Crystal reports Viewer</title>
 </head>
-<body id="CrystalReportViewerMain">
+<body id="CrystalReportViewerMainBody">
     <form id="frmReportContainer" runat="server">
     <div>
         <CR:CrystalReportViewer ID="CrystalReportViewerMain" runat="server" AutoDataBind="true" HasCrystalLogo="True" HasDrillUpButton="True" HasToggleGroupTreeButton="True" HasToggleParameterPanelButton="True" ToolPanelView="None"/>
