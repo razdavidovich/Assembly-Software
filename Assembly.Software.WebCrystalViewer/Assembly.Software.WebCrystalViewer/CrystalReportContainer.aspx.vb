@@ -5,11 +5,8 @@ Imports CrystalDecisions.Shared
 Imports Assembly.Software.Utilities
 Imports System.Collections.Generic
 
-
 Public Class CrystalReportContainer
     Inherits System.Web.UI.Page
-
-
 
 #Region "Class Definitions"
 
@@ -71,24 +68,21 @@ Public Class CrystalReportContainer
 
             End If
 
-            clsApplicationLogFile.LogFileName = LogFileName()
-            clsApplicationLogFile.LogFilePath = LogFilePath()
-            clsApplicationLogFile.WriteLog("page load ")
+            clsApplicationLogFile.WriteLog("page load")
 
             ' Get all the keys of the non-type paramaters - These are the acctual parameters that should be passed to the crystal report
-            objReportParamKeys = (From t In Request.QueryString.Keys _
-                                    Where (Not t.ToString().Equals("ReportType")) And _
-                                            Not (t.ToString().Equals("ReportFormat")) And _
-                                            Not (t.ToString().Equals("ReportApplication")) _
-                                    Select t).ToList()
+            objReportParamKeys = (From t In Request.QueryString.Keys
+                                  Where (Not t.ToString().Equals("ReportType")) And
+                                          Not (t.ToString().Equals("ReportFormat")) And
+                                          Not (t.ToString().Equals("ReportApplication"))
+                                  Select t).ToList()
             ' Load the reports
             LoadReport(Request.QueryString, objReportParamKeys)
             ' clsApplicationLogFile.WriteLog("after load ")
         Catch ex As Exception
+            clsApplicationLogFile.WriteLog(ex.ToString())
             Throw ex
         End Try
-
-
 
     End Sub
     ''' <summary>
@@ -134,8 +128,6 @@ Public Class CrystalReportContainer
 
                 End Try
             Next
-
-
 
             'Get the report login parameters from the application configuration file
             l_strServerName = Config.ReadASPConfigValue("ServerName", m_strReportApplication)
@@ -210,17 +202,10 @@ Public Class CrystalReportContainer
         Dim crTableLogOnInfo As TableLogOnInfo
         Dim crConnectioninfo As ConnectionInfo
 
-
         Try
-
 
             'Generate a new connection info object
             crConnectioninfo = New ConnectionInfo
-
-
-          
-
-
 
             clsApplicationLogFile.WriteLog("start " + "server: " + strServerName + "DB: " + strDatabaseName + "usr: " + strUsername)
 
@@ -228,7 +213,7 @@ Public Class CrystalReportContainer
             With crConnectioninfo
                 .ServerName = strServerName
                 .DatabaseName = strDatabaseName
-                .UserID = strUserName
+                .UserID = strUsername
                 .Password = strPassword
             End With
 
@@ -277,7 +262,7 @@ Public Class CrystalReportContainer
                             With crConnectioninfo
                                 .ServerName = strServerName
                                 .DatabaseName = strDatabaseName
-                                .UserID = strUserName
+                                .UserID = strUsername
                                 .Password = strPassword
                             End With
                             crTableLogOnInfo = crTable.LogOnInfo
@@ -296,42 +281,5 @@ Public Class CrystalReportContainer
             Throw New Exception("clsCrystalReports SetReportConnectionInfo " + vbCrLf + ex.ToString())
         End Try
     End Sub
-
-    Private ReadOnly Property LogFileName() As String
-        Get
-            Dim strConn As String = String.Empty
-            Dim sb As StringBuilder
-
-            Try
-                sb = New StringBuilder()
-                sb.Append(Assembly.Software.Utilities.Config.ReadASPConfigValue("LogFileName", "appSettings").ToString())
-                strConn = sb.ToString()
-            Catch ex As Exception
-                '  Loger.writeToLog(System.Reflection.MethodBase.GetCurrentMethod.Name, "Error Description", ex.Message)
-            Finally
-                sb = Nothing
-            End Try
-            Return strConn
-        End Get
-    End Property
-
-    Private ReadOnly Property LogFilePath() As String
-        Get
-            Dim strConn As String = String.Empty
-            Dim sb As StringBuilder
-
-            Try
-                sb = New StringBuilder()
-                sb.Append(Assembly.Software.Utilities.Config.ReadASPConfigValue("LogFilePath", "appSettings").ToString())
-                strConn = sb.ToString()
-            Catch ex As Exception
-                '  Loger.writeToLog(System.Reflection.MethodBase.GetCurrentMethod.Name, "Error Description", ex.Message)
-            Finally
-                sb = Nothing
-            End Try
-            Return strConn
-        End Get
-    End Property
-
 
 End Class
