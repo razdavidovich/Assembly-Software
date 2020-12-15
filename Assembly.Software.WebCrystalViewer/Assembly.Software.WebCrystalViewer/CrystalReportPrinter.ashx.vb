@@ -130,7 +130,8 @@ Public Class CrystalReportPrinterRequestJson
     Public Property ReportApplication As String
     Public Property ReportTypeName As String
     Public Property ReportParameters As JObject()
-    Public Property PrinterName As Object
+    Public Property PrinterName As String = Nothing
+
 End Class
 
 Public Class CrystalReportPrinterError
