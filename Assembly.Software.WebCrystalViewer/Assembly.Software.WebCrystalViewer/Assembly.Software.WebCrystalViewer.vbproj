@@ -25,8 +25,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44389</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -120,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CrystalReportContainer.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="lib\Assembly.Software.Profile.dll" />
     <Content Include="lib\Assembly.Software.Profile.xml" />
     <Content Include="Web.config" />
@@ -141,6 +141,9 @@
     </Compile>
     <Compile Include="CrystalReportPrinter.ashx.vb">
       <DependentUpon>CrystalReportPrinter.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -215,6 +218,8 @@
           <DevelopmentServerPort>56143</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:56143/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://localhost:44389/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

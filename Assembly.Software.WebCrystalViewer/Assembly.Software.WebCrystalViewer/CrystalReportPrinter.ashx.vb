@@ -115,7 +115,7 @@ Public Class CrystalReportPrinter
             'Set the CR viewer report source to the report document 
             CrystalReportViewerMainPrinter.ReportSource = l_objReportdocument
 
-            l_objReportdocument.PrintOptions.PrinterName = Config.ReadASPConfigValue("PrinterName", l_strPrinterName)
+            l_objReportdocument.PrintOptions.PrinterName = l_strPrinterName
             l_objReportdocument.PrintToPrinter(1, False, 0, 0)
 
         Catch ex As Exception
@@ -130,7 +130,8 @@ Public Class CrystalReportPrinterRequestJson
     Public Property ReportApplication As String
     Public Property ReportTypeName As String
     Public Property ReportParameters As JObject()
-    Public Property PrinterName As Object
+    Public Property PrinterName As String = Nothing
+
 End Class
 
 Public Class CrystalReportPrinterError
