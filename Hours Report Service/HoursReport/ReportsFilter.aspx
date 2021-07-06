@@ -1,8 +1,8 @@
-<%@ Page Language="vb" AutoEventWireup="false" Codebehind="ReportsFilter.aspx.vb" Inherits="HoursReport.ReportsFilter"%>
+ο»Ώ<%@ Page Language="vb" AutoEventWireup="false" Codebehind="ReportsFilter.aspx.vb" Inherits="HoursReport.ReportsFilter"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
 <html>
 	<HEAD>
-		<title>γεη ωςεϊ μςεαγ</title>
+		<title>Χ“Χ•Χ— Χ©ΧΆΧ•Χª ΧΧΆΧ•Χ‘Χ“</title>
 		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
 		<meta content="Visual Basic .NET 7.1" name="CODE_LANGUAGE">
 		<meta content="JavaScript" name="vs_defaultClientScript">
@@ -63,28 +63,28 @@
 			<table width="100%">
 				<tr>
 					<td width="10%"><asp:button id="btnBack" runat="server" Width="130px" Height="24px" 
-                            Text="γιεεη ωςεϊ" CausesValidation="False"
+                            Text="Χ“Χ™Χ•Χ•Χ— Χ©ΧΆΧ•Χª" CausesValidation="False"
 							CommandName="Clear" Font-Bold="True" Font-Names="David" Font-Size="Larger" ForeColor="Black" 
                             TabIndex="4"></asp:button></td>
 					<td width="10%"><asp:button id="btnGenerateReport" runat="server" Width="130px" 
-                            Height="24px" Text='δτχ γε"η'
+                            Height="24px" Text='Χ”Χ¤Χ§ Χ“Χ•"Χ—'
 							CausesValidation="False" CommandName="Clear" Font-Bold="True" Font-Names="David" Font-Size="Larger"
 							ForeColor="Green" TabIndex="3"></asp:button></td>
 					<td width="10%"><asp:dropdownlist id="cmbReportYear" dir="rtl" tabIndex="2" runat="server" Width="100%"></asp:dropdownlist></td>
 					<td width="10%"><asp:dropdownlist id="cmbReportMonth" dir="rtl" tabIndex="1" 
                             runat="server" Width="100%">
-							<asp:ListItem Value="1">ιπεΰψ</asp:ListItem>
-							<asp:ListItem Value="2">ταψεΰψ</asp:ListItem>
-							<asp:ListItem Value="3">ξψυ</asp:ListItem>
-							<asp:ListItem Value="4">ΰτψιμ</asp:ListItem>
-							<asp:ListItem Value="5">ξΰι</asp:ListItem>
-							<asp:ListItem Value="6">ιεπι</asp:ListItem>
-							<asp:ListItem Value="7">ιεμι</asp:ListItem>
-							<asp:ListItem Value="8">ΰεβερθ</asp:ListItem>
-							<asp:ListItem Value="9">ρτθξαψ</asp:ListItem>
-							<asp:ListItem Value="10">ΰεχθεαψ</asp:ListItem>
-							<asp:ListItem Value="11">πεαξαψ</asp:ListItem>
-							<asp:ListItem Value="12">γφξαψ</asp:ListItem>
+							<asp:ListItem Value="1">Χ™Χ Χ•ΧΧ¨</asp:ListItem>
+							<asp:ListItem Value="2">Χ¤Χ‘Χ¨Χ•ΧΧ¨</asp:ListItem>
+							<asp:ListItem Value="3">ΧΧ¨Χ¥</asp:ListItem>
+							<asp:ListItem Value="4">ΧΧ¤Χ¨Χ™Χ</asp:ListItem>
+							<asp:ListItem Value="5">ΧΧΧ™</asp:ListItem>
+							<asp:ListItem Value="6">Χ™Χ•Χ Χ™</asp:ListItem>
+							<asp:ListItem Value="7">Χ™Χ•ΧΧ™</asp:ListItem>
+							<asp:ListItem Value="8">ΧΧ•Χ’Χ•Χ΅Χ</asp:ListItem>
+							<asp:ListItem Value="9">Χ΅Χ¤ΧΧΧ‘Χ¨</asp:ListItem>
+							<asp:ListItem Value="10">ΧΧ•Χ§ΧΧ•Χ‘Χ¨</asp:ListItem>
+							<asp:ListItem Value="11">Χ Χ•Χ‘ΧΧ‘Χ¨</asp:ListItem>
+							<asp:ListItem Value="12">Χ“Χ¦ΧΧ‘Χ¨</asp:ListItem>
 						</asp:dropdownlist></td>
 					<td align="right" width="20%"><asp:dropdownlist id="cmbReportToExecute" dir="rtl" 
                             runat="server" Width="100%"></asp:dropdownlist></td>

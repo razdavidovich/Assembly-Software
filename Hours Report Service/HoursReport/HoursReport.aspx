@@ -7,7 +7,7 @@
 		<title>דיווח שעות באינטרנט</title>
 		<meta content="False" name="vs_snapToGrid"/>
 		<meta content="True" name="vs_showGrid"/>
-		<meta http-equiv="Content-Type" content="text/html; charset=windows-1255"/>
+		<%--<meta http-equiv="Content-Type" content="text/html; charset=windows-1255"/>--%>
 		<meta content="Microsoft Visual Studio.NET 7.0" name="GENERATOR"/>
 		<meta content="Visual Basic 7.0" name="CODE_LANGUAGE" />
 		<meta content="JavaScript" name="vs_defaultClientScript" />

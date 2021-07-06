@@ -1,11 +1,13 @@
-<%@ Page Language="vb" AutoEventWireup="false" Codebehind="AbsenceReport.aspx.vb" Inherits="HoursReport.AbsenceReport" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
-<html dir="rtl">
+ן»¿<%@ Page Language="vb" AutoEventWireup="false" Codebehind="AbsenceReport.aspx.vb" Inherits="HoursReport.AbsenceReport" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
 	<HEAD>
-		<title>דיווח העדרות באינטרנט</title>
+		<title>׳“׳™׳•׳•׳— ׳”׳¢׳“׳¨׳•׳× ׳‘׳׳™׳ ׳˜׳¨׳ ׳˜</title>
 		<meta name="vs_snapToGrid" content="False">
 		<meta name="vs_showGrid" content="True">
-		<META http-equiv="Content-Type" content="text/html; charset=windows-1255">
+		<%--<META http-equiv="Content-Type" content="text/html; charset=windows-1255">--%>
 		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
 		<meta name="CODE_LANGUAGE" content="Visual Basic .NET 7.1">
 		<meta name="vs_defaultClientScript" content="JavaScript">
@@ -76,39 +78,39 @@
 				<asp:ListItem Value="24">24</asp:ListItem>
 			</asp:DropDownList>
 			<asp:Label id="Label3" style="Z-INDEX: 102; LEFT: 739px; POSITION: absolute; TOP: 81px" runat="server"
-				Width="95px">שעות העדרות</asp:Label>
+				Width="95px">׳©׳¢׳•׳× ׳”׳¢׳“׳¨׳•׳×</asp:Label>
 			<asp:Label id="Label4" style="Z-INDEX: 103; LEFT: 735px; POSITION: absolute; TOP: 121px" runat="server"
-				Width="99px">סוג העדרות</asp:Label>
+				Width="99px">׳¡׳•׳’ ׳”׳¢׳“׳¨׳•׳×</asp:Label>
 			<asp:DropDownList id="ddlAbsenceType" style="Z-INDEX: 104; LEFT: 545px; POSITION: absolute; TOP: 120px"
 				tabIndex="2" runat="server" Width="175px">
-				<asp:ListItem Value="-1" Selected="True">=== בחר סוג העדרות ===</asp:ListItem>
+				<asp:ListItem Value="-1" Selected="True">=== ׳‘׳—׳¨ ׳¡׳•׳’ ׳”׳¢׳“׳¨׳•׳× ===</asp:ListItem>
 			</asp:DropDownList>
 			<asp:Button id="btnSaveTask" style="Z-INDEX: 105; LEFT: 728px; POSITION: absolute; TOP: 335px"
 				runat="server" Height="37px" Width="130px" ForeColor="#00C000" Font-Size="Larger" Font-Names="David"
-				Font-Bold="True" Text="שמור את הדיווח"></asp:Button>
+				Font-Bold="True" Text="׳©׳׳•׳¨ ׳׳× ׳”׳“׳™׳•׳•׳—"></asp:Button>
 			<asp:Button id="btnClearForm" style="Z-INDEX: 106; LEFT: 440px; POSITION: absolute; TOP: 335px"
 				runat="server" Height="37px" Width="130px" ForeColor="Red" Font-Size="Larger" Font-Names="David"
-				Font-Bold="True" Text="נקה טופס" CausesValidation="False"></asp:Button>
+				Font-Bold="True" Text="׳ ׳§׳” ׳˜׳•׳₪׳¡" CausesValidation="False"></asp:Button>
 			<asp:Button id="btnBackToMain" style="Z-INDEX: 107; LEFT: 96px; POSITION: absolute; TOP: 335px"
 				runat="server" Height="37px" Width="130px" Font-Size="Larger" Font-Names="David" Font-Bold="True"
-				Text="חזור למסך ראשי" CausesValidation="False"></asp:Button>
+				Text="׳—׳–׳•׳¨ ׳׳׳¡׳ ׳¨׳׳©׳™" CausesValidation="False"></asp:Button>
 			<asp:Label id="lblUserName" style="Z-INDEX: 108; LEFT: 494px; POSITION: absolute; TOP: 32px"
-				runat="server" Width="344px" ForeColor="Green" Font-Size="Larger" Font-Bold="True">שלום רז דודוביץ</asp:Label>
+				runat="server" Width="344px" ForeColor="Green" Font-Size="Larger" Font-Bold="True">׳©׳׳•׳ ׳¨׳– ׳“׳•׳“׳•׳‘׳™׳¥</asp:Label>
 			<asp:Label id="Label7" style="Z-INDEX: 109; LEFT: 739px; POSITION: absolute; TOP: 162px" runat="server"
-				Width="96px">תאור העדרות</asp:Label>
+				Width="96px">׳×׳׳•׳¨ ׳”׳¢׳“׳¨׳•׳×</asp:Label>
 			<asp:TextBox id="txtAbsenceDescription" style="Z-INDEX: 110; LEFT: 473px; POSITION: absolute; TOP: 160px"
 				tabIndex="4" runat="server" Width="247px" MaxLength="100" Height="85px"></asp:TextBox>
 			<asp:Button id="cmdAbsenceReport" style="Z-INDEX: 111; LEFT: 584px; POSITION: absolute; TOP: 335px"
 				runat="server" Height="37px" Width="130px" ForeColor="RoyalBlue" Font-Size="Larger" Font-Names="David"
-				Font-Bold="True" Text="דיווח שעות" CausesValidation="False"></asp:Button>
+				Font-Bold="True" Text="׳“׳™׳•׳•׳— ׳©׳¢׳•׳×" CausesValidation="False"></asp:Button>
 			<asp:Label id="Label2" style="Z-INDEX: 113; LEFT: 792px; POSITION: absolute; TOP: 427px" runat="server"
-				ForeColor="Red" Width="57px" Height="16px" Font-Bold="True" Font-Underline="True">שים לב</asp:Label>
+				ForeColor="Red" Width="57px" Height="16px" Font-Bold="True" Font-Underline="True">׳©׳™׳ ׳׳‘</asp:Label>
 			<asp:Label id="Label8" style="Z-INDEX: 114; LEFT: 96px; POSITION: absolute; TOP: 451px" runat="server"
-				ForeColor="Green" Width="753px" Height="16px" Font-Bold="True">אם בזמן לחיצה על שמירת דיווח מופיעה כוכבית אדומה (*) השדה שמשמאל לכוכבית הנו שדה חובה למילוי</asp:Label>
+				ForeColor="Green" Width="753px" Height="16px" Font-Bold="True">׳׳ ׳‘׳–׳׳ ׳׳—׳™׳¦׳” ׳¢׳ ׳©׳׳™׳¨׳× ׳“׳™׳•׳•׳— ׳׳•׳₪׳™׳¢׳” ׳›׳•׳›׳‘׳™׳× ׳׳“׳•׳׳” (*) ׳”׳©׳“׳” ׳©׳׳©׳׳׳ ׳׳›׳•׳›׳‘׳™׳× ׳”׳ ׳• ׳©׳“׳” ׳—׳•׳‘׳” ׳׳׳™׳׳•׳™</asp:Label>
 			<HR style="Z-INDEX: 115; LEFT: 88px; WIDTH: 83.24%; POSITION: absolute; TOP: 403px; HEIGHT: 2px"
 				width="83.24%" noShade SIZE="2">
 			<asp:label id="lblErrorDescription" style="Z-INDEX: 116; LEFT: 545px; POSITION: absolute; TOP: 296px"
-				runat="server" ForeColor="Red" Width="305px" Height="24px" Font-Bold="True" Visible="False">חובה למלא את כל השדות המסומנים בכוכבית !!!</asp:label>
+				runat="server" ForeColor="Red" Width="305px" Height="24px" Font-Bold="True" Visible="False">׳—׳•׳‘׳” ׳׳׳׳ ׳׳× ׳›׳ ׳”׳©׳“׳•׳× ׳”׳׳¡׳•׳׳ ׳™׳ ׳‘׳›׳•׳›׳‘׳™׳× !!!</asp:label>
 			<asp:RequiredFieldValidator id="vldAbsenceDescription" style="Z-INDEX: 117; LEFT: 847px; POSITION: absolute; TOP: 163px"
 				runat="server" Width="11px" Height="22px" Font-Bold="True" ControlToValidate="txtAbsenceDescription" ErrorMessage="*"></asp:RequiredFieldValidator>
 			<asp:RangeValidator id="vldAbsenceType" style="Z-INDEX: 118; LEFT: 849px; POSITION: absolute; TOP: 116px"
@@ -116,7 +118,7 @@
 				MinimumValue="0" MaximumValue="9999"></asp:RangeValidator>
 			<asp:button id="btnReports" style="Z-INDEX: 126; LEFT: 296px; POSITION: absolute; TOP: 336px"
 				runat="server" Font-Names="David" Font-Size="Larger" ForeColor="CadetBlue" Width="130px"
-				Height="37px" Text="דוחות" Font-Bold="True" CausesValidation="False" CommandName="Clear"></asp:button>
+				Height="37px" Text="׳“׳•׳—׳•׳×" Font-Bold="True" CausesValidation="False" CommandName="Clear"></asp:button>
 		</form>
 	</body>
 </html>
