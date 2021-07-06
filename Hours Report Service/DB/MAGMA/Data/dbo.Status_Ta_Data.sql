@@ -1,0 +1,6 @@
+INSERT INTO [dbo].[Status_Ta] ([Code], [MainStatus]) VALUES (11, N'מעקב הצעת מחיר')
+INSERT INTO [dbo].[Status_Ta] ([Code], [MainStatus]) VALUES (12, N'הזמנה')
+INSERT INTO [dbo].[Status_Ta] ([Code], [MainStatus]) VALUES (13, N'הסכם שירות')
+INSERT INTO [dbo].[Status_Ta] ([Code], [MainStatus]) VALUES (20, N'עבודה לפי שעות (רג''י)')
+INSERT INTO [dbo].[Status_Ta] ([Code], [MainStatus]) VALUES (30, N'הצעה נדחתה')
+INSERT INTO [dbo].[Status_Ta] ([Code], [MainStatus]) VALUES (40, N'מטלה פנימית')

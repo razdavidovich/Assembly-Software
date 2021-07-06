@@ -1,0 +1,7 @@
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (10, N'Vision')
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (20, N'מכונות')
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (30, N'בקרה')
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (40, N'תוכנה')
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (50, N'מזכירות')
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (60, N'ניהול')
+INSERT INTO [dbo].[JobTitle_Ta] ([Code], [Description]) VALUES (999, N'כללי לעדכון')

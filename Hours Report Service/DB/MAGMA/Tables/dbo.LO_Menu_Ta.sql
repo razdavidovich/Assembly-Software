@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[LO_Menu_Ta]
+(
+[intRowID] [int] NOT NULL IDENTITY(1, 1),
+[intDayID] [int] NOT NULL,
+[intDishID] [int] NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[LO_Menu_Ta] ADD CONSTRAINT [PK_LO_Menu_Ta] PRIMARY KEY CLUSTERED ([intRowID]) ON [PRIMARY]
+GO
