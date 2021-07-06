@@ -224,14 +224,19 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="My Project\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="libman.json" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\PublishProfiles\IISProfile.pubxml" />
     <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -250,7 +255,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2104</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
