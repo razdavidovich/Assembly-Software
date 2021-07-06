@@ -1,4 +1,4 @@
-Imports System.Diagnostics
+﻿Imports System.Diagnostics
 Imports System.Data.SqlClient
 
 Partial Class ReportsFilter

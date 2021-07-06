@@ -1,4 +1,4 @@
-Imports System.Diagnostics
+ο»ΏImports System.Diagnostics
 Imports System.Data.SqlClient
 
 Partial Class AbsenceReport
@@ -31,7 +31,7 @@ Partial Class AbsenceReport
         'Cut the user name from the domain
         If Len(Trim(strUserName)) > 0 Then
             strUserName = Mid(strUserName, InStr(strUserName, "\", CompareMethod.Text) + 1, Len(strUserName))
-            lblUserName.Text = "ωμεν " & GetUserName(strUserName)
+            lblUserName.Text = "Χ©ΧΧ•Χ " & GetUserName(strUserName)
 
             'Check if the user has been identify
             If intEmployeeID = -1 Then Response.Redirect("Error.aspx")
@@ -197,18 +197,18 @@ Partial Class AbsenceReport
 
                     'All OK, display a success label
                     .ForeColor = Color.ForestGreen
-                    .Text = "δγιεεη πωξψ αδφμηδ μαριρ δπϊεπιν"
+                    .Text = "Χ”Χ“Χ™Χ•Χ•Χ— Χ Χ©ΧΧ¨ Χ‘Χ”Χ¦ΧΧ—Χ” ΧΧ‘Χ΅Χ™Χ΅ Χ”Χ ΧªΧ•Χ Χ™Χ"
                     .Visible = True
                 Else
                     'Save Failed, display an error message
                     .ForeColor = Color.Red
-                    .Text = "ηεαδ μξμΰ ΰϊ λμ δωγεϊ δξρεξπιν αλελαιϊ !!!"
+                    .Text = "Χ—Χ•Χ‘Χ” ΧΧΧΧ ΧΧª Χ›Χ Χ”Χ©Χ“Χ•Χª Χ”ΧΧ΅Χ•ΧΧ Χ™Χ Χ‘Χ›Χ•Χ›Χ‘Χ™Χª !!!"
                     .Visible = True
                 End If
             Else
                 'Save Failed, display an error message
                 .ForeColor = Color.Red
-                .Text = "ηεαδ μξμΰ ΰϊ λμ δωγεϊ δξρεξπιν αλελαιϊ !!!"
+                .Text = "Χ—Χ•Χ‘Χ” ΧΧΧΧ ΧΧª Χ›Χ Χ”Χ©Χ“Χ•Χª Χ”ΧΧ΅Χ•ΧΧ Χ™Χ Χ‘Χ›Χ•Χ›Χ‘Χ™Χª !!!"
                 .Visible = True
             End If
         End With

@@ -1,1 +1,1 @@
-<%@ Application Codebehind="Global.asax.vb" Inherits="HoursReport.Global" %>
+﻿<%@ Application Codebehind="Global.asax.vb" Inherits="HoursReport.Global" %>
