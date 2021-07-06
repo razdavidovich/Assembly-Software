@@ -54,9 +54,14 @@
 						
 			//___________________________________________________________________
 						
-			
+
+            function btnBackOnClientClick() {
+                top.location.href = "HoursReport.aspx";
+                return false;
+            }
+
 		//-->
-		</script>
+        </script>
 	</HEAD>
 	<body MS_POSITIONING="GridLayout">
 		<form id="Form1" method="post" runat="server">

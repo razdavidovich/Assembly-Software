@@ -42,7 +42,7 @@ Partial Class ReportsFilter
             FillReportsComboBox()
 
             'Add the top frame navigation back to the hours report form
-            btnBack.Attributes.Add("onClick", "return window.top.navigate(""HoursReport.aspx"");")
+            btnBack.Attributes.Add("onClick", "return btnBackOnClientClick();")
 
             'Add the Report generation action (JavaScript)
             btnGenerateReport.Attributes.Add("onClick", "return GenerateReport(" + intEmployeeID.ToString + ");")
