@@ -1,4 +1,4 @@
-<%@ Page Language="vb" AutoEventWireup="false" Codebehind="ErrorMessage.aspx.vb" Inherits="HoursReport.ErrorMessage" %>
+ן»¿<%@ Page Language="vb" AutoEventWireup="false" Codebehind="ErrorMessage.aspx.vb" Inherits="HoursReport.ErrorMessage" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
 <html dir="rtl">
 	<HEAD>
@@ -14,20 +14,17 @@
 				cellSpacing="1" cellPadding="1" width="100%" border="0">
 				<TR>
 					<TD>
-						<asp:Label id="Label1" runat="server" Width="608px" Height="48px" Font-Size="XX-Large" ForeColor="Red">שם משתמש לא מוכר במערכת !!!</asp:Label></TD>
+						<asp:Label id="Label1" runat="server" Width="608px" Height="48px" Font-Size="XX-Large" ForeColor="Red">׳©׳ ׳׳©׳×׳׳© ׳׳ ׳׳•׳›׳¨ ׳‘׳׳¢׳¨׳›׳× !!!</asp:Label></TD>
 				</TR>
 				<TR>
 					<TD></TD>
 				</TR>
 				<TR>
-					<TD colSpan="1" rowSpan="1">אנא נסה לסגור את הדפדפן ולהתחבר שוב לאתר החברה</TD>
+					<TD colSpan="1" rowSpan="1">׳׳ ׳ ׳ ׳¡׳” ׳׳¡׳’׳•׳¨ ׳׳× ׳”׳“׳₪׳“׳₪׳ ׳•׳׳”׳×׳—׳‘׳¨ ׳©׳•׳‘ ׳׳׳×׳¨ ׳”׳—׳‘׳¨׳”</TD>
 				</TR>
 				<TR>
-					<TD colSpan="1" rowSpan="1">במידה והבעיה חוזרת על עצמה, אנא פנה למנהל המערכת על מנת 
-						שיעדכן את פרופיל המשתמש שלך בבסיס הנתונים</TD>
-				</TR>
-				<TR>
-					<TD colSpan="1" rowSpan="1">&nbsp;</TD>
+					<TD colSpan="1" rowSpan="1">׳‘׳׳™׳“׳” ׳•׳”׳‘׳¢׳™׳” ׳—׳•׳–׳¨׳× ׳¢׳ ׳¢׳¦׳׳”, ׳׳ ׳ ׳₪׳ ׳” ׳׳׳ ׳”׳ ׳”׳׳¢׳¨׳›׳× ׳¢׳ ׳׳ ׳× 
+						׳©׳™׳¢׳“׳›׳ ׳׳× ׳₪׳¨׳•׳₪׳™׳ ׳”׳׳©׳×׳׳© ׳©׳׳ ׳‘׳‘׳¡׳™׳¡ ׳”׳ ׳×׳•׳ ׳™׳</TD>
 				</TR>
 				<TR>
 					<TD colSpan="1" rowSpan="1">&nbsp;</TD>
@@ -36,7 +33,10 @@
 					<TD colSpan="1" rowSpan="1">&nbsp;</TD>
 				</TR>
 				<TR>
-					<TD colSpan="1" rowSpan="1"><INPUT onClick="javascipt:window.close()" TYPE="button" VALUE="סגור דפדפן" TITLE="לחץ לסגירת הדפדפן"
+					<TD colSpan="1" rowSpan="1">&nbsp;</TD>
+				</TR>
+				<TR>
+					<TD colSpan="1" rowSpan="1"><INPUT onClick="javascipt:window.close()" TYPE="button" VALUE="׳¡׳’׳•׳¨ ׳“׳₪׳“׳₪׳" TITLE="׳׳—׳¥ ׳׳¡׳’׳™׳¨׳× ׳”׳“׳₪׳“׳₪׳"
 							NAME="CloseWindow" STYLE="FONT-WEIGHT:bold; FONT-SIZE:larger; FONT-FAMILY:Verdana, Arial, Helvetica"></TD>
 				</TR>
 			</TABLE>
