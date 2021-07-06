@@ -115,7 +115,7 @@
 				width="83.24%" noShade SIZE="2"/>
 			<asp:button id="btnReports" style="Z-INDEX: 126; LEFT: 296px; POSITION: absolute; TOP: 409px"
 				runat="server" Height="37px" Width="130px" ForeColor="CadetBlue" Font-Size="Larger" Font-Names="David"
-				Font-Bold="True" Text="ãåçåú" CommandName="Clear" CausesValidation="False"></asp:button>
+				Font-Bold="True" Text="דוחות" CommandName="Clear" CausesValidation="False"></asp:button>
 		</form>
 	</body>
 </html>
