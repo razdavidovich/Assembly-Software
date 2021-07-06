@@ -3,16 +3,16 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
-	<HEAD>
+	<head>
 		<title>דיווח שעות באינטרנט</title>
-		<meta content="False" name="vs_snapToGrid">
-		<meta content="True" name="vs_showGrid">
-		<META http-equiv="Content-Type" content="text/html; charset=windows-1255">
-		<meta content="Microsoft Visual Studio.NET 7.0" name="GENERATOR">
-		<meta content="Visual Basic 7.0" name="CODE_LANGUAGE">
-		<meta content="JavaScript" name="vs_defaultClientScript">
-		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
-	</HEAD>
+		<meta content="False" name="vs_snapToGrid"/>
+		<meta content="True" name="vs_showGrid"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1255"/>
+		<meta content="Microsoft Visual Studio.NET 7.0" name="GENERATOR"/>
+		<meta content="Visual Basic 7.0" name="CODE_LANGUAGE" />
+		<meta content="JavaScript" name="vs_defaultClientScript" />
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema" />
+	</head>
 	<body leftMargin="30" MS_POSITIONING="GridLayout">
 		<form id="Form1" method="post" runat="server">
 			<asp:calendar id="cdrActionDate" style="Z-INDEX: 100; LEFT: 96px; POSITION: absolute; TOP: 14px"
@@ -111,8 +111,8 @@
 				ForeColor="Red" Width="57px" Height="16px" Font-Bold="True" Font-Underline="True">שים לב</asp:Label>
 			<asp:Label id="Label8" style="Z-INDEX: 124; LEFT: 104px; POSITION: absolute; TOP: 520px" runat="server"
 				ForeColor="Green" Width="753px" Height="16px" Font-Bold="True">אם בזמן לחיצה על שמירת דיווח מופיעה כוכבית אדומה (*) השדה שמשמאל לכוכבית הנו שדה חובה למילוי</asp:Label>
-			<HR style="Z-INDEX: 125; LEFT: 96px; WIDTH: 83.24%; POSITION: absolute; TOP: 472px; HEIGHT: 2px"
-				width="83.24%" noShade SIZE="2">
+			<hr style="Z-INDEX: 125; LEFT: 96px; WIDTH: 83.24%; POSITION: absolute; TOP: 472px; HEIGHT: 2px"
+				width="83.24%" noShade SIZE="2"/>
 			<asp:button id="btnReports" style="Z-INDEX: 126; LEFT: 296px; POSITION: absolute; TOP: 409px"
 				runat="server" Height="37px" Width="130px" ForeColor="CadetBlue" Font-Size="Larger" Font-Names="David"
 				Font-Bold="True" Text="ãåçåú" CommandName="Clear" CausesValidation="False"></asp:button>
