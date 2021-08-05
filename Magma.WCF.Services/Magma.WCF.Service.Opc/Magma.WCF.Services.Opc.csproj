@@ -84,6 +84,15 @@
       <Name>Magma.WCF.Services.Logging</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\Lighthouse.LHSystem.dll" />
+    <Content Include="DLL\Lighthouse.Opc.ClientLibrary.dll" />
+    <Content Include="DLL\Lighthouse.Udi.ScriptingEngine.dll" />
+    <Content Include="DLL\OpcDaNet.dll" />
+    <Content Include="DLL\OpcDaNetUA.Net4.dll" />
+    <Content Include="DLL\OpcDaNetUaOption.Net4.dll" />
+    <Content Include="DLL\OpcNetBase.Net4.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
