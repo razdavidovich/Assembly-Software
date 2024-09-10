@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="MAGMA">
+      <DataSourceReference>MAGMA</DataSourceReference>
+      <rd:DataSourceID>7aa78a04-4f5a-4b42-88b4-682d61ca51c3</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>1.5cm</BottomMargin>
+  <RightMargin>1.5cm</RightMargin>
+  <PageWidth>29.7cm</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="intReportYear">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=iif(Month(Now)=1,Year(Now)-1,Year(Now))</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>שנה</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="intReportMonth">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=iif(Month(Now)=1,12,Month(Now)-1)</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>חודש</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Month_Select</DataSetName>
+          <ValueField>MonthNumber</ValueField>
+          <LabelField>MonthText</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="intTaskCode">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>מספר פרויקט</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="intEmployee">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>שם העובד</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Employee_Select</DataSetName>
+          <ValueField>ID</ValueField>
+          <LabelField>EmployeeName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="intCompanyCode">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>שם החברה</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Company_Select</DataSetName>
+          <ValueField>CompanyCode</ValueField>
+          <LabelField>CompanyName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="intAbcenseCode">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>intAbcenseCode</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Abcense_Select</DataSetName>
+          <ValueField>Code</ValueField>
+          <LabelField>Description</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>false</rd:SnapToGrid>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Table Name="table1">
+        <DataSetName>HoursToEmployee</DataSetName>
+        <TableGroups>
+          <TableGroup>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>6</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="textbox27">
+                          <rd:DefaultName>textbox27</rd:DefaultName>
+                          <ZIndex>7</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>DarkOrange</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>= "סה""כ " + Sum(Fields!HoursToEmployee.Value).ToString + " שעות עבודה אשר דווחו במהלך " + CountDistinct(Fields!ReportDate.Value).ToString + " ימי דיווח"</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.63492cm</Height>
+                </TableRow>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>6</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="textbox28">
+                          <rd:DefaultName>textbox28</rd:DefaultName>
+                          <ZIndex>8</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>1.53439cm</Height>
+                </TableRow>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>6</ColSpan>
+                      <ReportItems>
+                        <Subreport Name="AbcenseToEmployee">
+                          <Parameters>
+                            <Parameter Name="intReportYear">
+                              <Value>=Fields!ReportYear.Value</Value>
+                            </Parameter>
+                            <Parameter Name="intReportMonth">
+                              <Value>=Fields!ReportMonth.Value</Value>
+                            </Parameter>
+                            <Parameter Name="intEmployee">
+                              <Value>=Fields!EmployeeCode.Value</Value>
+                            </Parameter>
+                            <Parameter Name="intAbcenseCode">
+                              <Value>0</Value>
+                            </Parameter>
+                          </Parameters>
+                          <ZIndex>9</ZIndex>
+                          <ReportName>EmployeeMonthlyAbcenseReport</ReportName>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                          </Style>
+                        </Subreport>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>1.2963cm</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>6</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="textbox4">
+                          <rd:DefaultName>textbox4</rd:DefaultName>
+                          <ZIndex>17</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>20pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <Color>SteelBlue</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>= "דו""ח שעות עבודה מפורט עבור " + Fields!EmployeeName.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>1.40212cm</Height>
+                </TableRow>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>6</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="textbox19">
+                          <rd:DefaultName>textbox19</rd:DefaultName>
+                          <ZIndex>16</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>14pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <Color>SteelBlue</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>="סיכום שעות לחודש " + Fields!ReportMonthName.Value + Fields!ReportYear.Value.ToString</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.95238cm</Height>
+                </TableRow>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox20">
+                          <rd:DefaultName>textbox20</rd:DefaultName>
+                          <ZIndex>15</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>סוג דיווח</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox21">
+                          <ZIndex>14</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Bottom>Solid</Bottom>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <BorderWidth>
+                              <Bottom>1pt</Bottom>
+                            </BorderWidth>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Bottom>Black</Bottom>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>שם לקוח</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox22">
+                          <ZIndex>13</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>פעולה שבוצעה</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox7">
+                          <rd:DefaultName>textbox7</rd:DefaultName>
+                          <ZIndex>12</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>מטלה</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox16">
+                          <ZIndex>11</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <Direction>RTL</Direction>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>שעות עבודה</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox24">
+                          <ZIndex>10</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>תאריך</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.63492cm</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!EmployeeName.Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Grouping Name="table1_Employee">
+              <PageBreakAtEnd>true</PageBreakAtEnd>
+              <GroupExpressions>
+                <GroupExpression>=Fields!EmployeeName.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+          <TableGroup>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>6</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="DailyHoursSum">
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>="סה""כ " + Sum(Fields!HoursToEmployee.Value).ToString + " שעות לתאריך " + Format(Fields!ReportDate.Value,"dd/MM/yyyy").ToString</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.63492cm</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!ReportDate.Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Grouping Name="table1_ReportDate">
+              <GroupExpressions>
+                <GroupExpression>=Fields!ReportDate.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+          </TableGroup>
+        </TableGroups>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <ZIndex>5</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ActionType.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox2">
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!CompanyName.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox1">
+                      <ZIndex>3</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Comment.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox9">
+                      <rd:DefaultName>textbox9</rd:DefaultName>
+                      <ZIndex>2</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Description.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox13">
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!HoursToEmployee.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <ToggleImage>
+                        <InitialState>true</InitialState>
+                      </ToggleImage>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Tahoma</FontFamily>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Format(Fields!ReportDate.Value,"dd/MM/yyyy")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.63492cm</Height>
+            </TableRow>
+          </TableRows>
+        </Details>
+        <Style>
+          <Direction>RTL</Direction>
+        </Style>
+        <TableColumns>
+          <TableColumn>
+            <Width>2.59259cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3.73016cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>8.51852cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>5.68783cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.64021cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>2.22222cm</Width>
+          </TableColumn>
+        </TableColumns>
+      </Table>
+    </ReportItems>
+    <Height>7.72487cm</Height>
+  </Body>
+  <rd:ReportID>73658be9-ff80-4e2e-8ce7-b4f4f79261e1</rd:ReportID>
+  <LeftMargin>1.5cm</LeftMargin>
+  <DataSets>
+    <DataSet Name="HoursToEmployee">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.GetHoursToEmployee_Sp</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@intReportYear">
+            <Value>=Parameters!intReportYear.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intReportMonth">
+            <Value>=Parameters!intReportMonth.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intTaskCode">
+            <Value>=Parameters!intTaskCode.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intEmployee">
+            <Value>=Parameters!intEmployee.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intCompanyCode">
+            <Value>=Parameters!intCompanyCode.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="ReportID">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportID</DataField>
+        </Field>
+        <Field Name="ReportMonth">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportMonth</DataField>
+        </Field>
+        <Field Name="ReportYear">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportYear</DataField>
+        </Field>
+        <Field Name="EmployeeCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>EmployeeCode</DataField>
+        </Field>
+        <Field Name="EmployeeName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>EmployeeName</DataField>
+        </Field>
+        <Field Name="TaskCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>TaskCode</DataField>
+        </Field>
+        <Field Name="Description">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="ReportDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>ReportDate</DataField>
+        </Field>
+        <Field Name="HoursToEmployee">
+          <rd:TypeName>System.Double</rd:TypeName>
+          <DataField>HoursToEmployee</DataField>
+        </Field>
+        <Field Name="Comment">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Comment</DataField>
+        </Field>
+        <Field Name="PlannedHours">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>PlannedHours</DataField>
+        </Field>
+        <Field Name="ActionType">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ActionType</DataField>
+        </Field>
+        <Field Name="CompanyCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>CompanyCode</DataField>
+        </Field>
+        <Field Name="ReportedDayOfTheWeek">
+          <Value>=Weekday(Fields!ReportDate.Value)</Value>
+        </Field>
+        <Field Name="ReportMonthName">
+          <Value>=Switch(Fields!ReportMonth.Value = 1 , "ינואר ",
+Fields!ReportMonth.Value = 2 , "פברואר ",
+Fields!ReportMonth.Value = 3 , "מרץ ",
+Fields!ReportMonth.Value = 4 , "אפריל ",
+Fields!ReportMonth.Value = 5 , "מאי ",
+Fields!ReportMonth.Value = 6 , "יוני ",
+Fields!ReportMonth.Value = 7 , "יולי ",
+Fields!ReportMonth.Value = 8 , "אוגוסט ",
+Fields!ReportMonth.Value = 9 , "ספטמבר ",
+Fields!ReportMonth.Value = 10 , "אוקטובר ",
+Fields!ReportMonth.Value = 11 , "נובמבר ",
+Fields!ReportMonth.Value = 12 , "דצמבר ")</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Month_Select">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>SELECT     MonthNumber, MonthText
+FROM         Month_Ta</CommandText>
+        <Timeout>30</Timeout>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="MonthNumber">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>MonthNumber</DataField>
+        </Field>
+        <Field Name="MonthText">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>MonthText</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Employee_Select">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>SELECT [ID], FirstName + ' ' + LastName AS EmployeeName FROM dbo.Employee_Ta
+WHERE ActiveEmployee = -1
+UNION
+SELECT 0 AS [ID], '&lt;כל העובדים&gt;' AS EmployeeName
+ORDER BY EmployeeName</CommandText>
+        <Timeout>30</Timeout>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ID</DataField>
+        </Field>
+        <Field Name="EmployeeName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>EmployeeName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Abcense_Select">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>SELECT     Code, Description
+FROM         Absence_Ta
+UNION
+SELECT     0 AS Code, '&lt;הכל&gt;' AS Description</CommandText>
+        <Timeout>30</Timeout>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="Code">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>Code</DataField>
+        </Field>
+        <Field Name="Description">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Description</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Company_Select">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>SELECT     CompanyCode, CompanyName
+FROM         Company_Ta
+UNION
+SELECT 0 AS [CompanyCode], '&lt;כל החברות&gt;' AS CompanyName
+ORDER BY CompanyCode</CommandText>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="CompanyCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>CompanyCode</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CompanyName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Author>Raz Davidovich</Author>
+  <Code />
+  <Width>24.39154cm</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Language>en-US</Language>
+  <PageFooter>
+    <ReportItems>
+      <Textbox Name="textbox5">
+        <Top>0.02646cm</Top>
+        <rd:DefaultName>textbox5</rd:DefaultName>
+        <Width>24.28571cm</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>11pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Value>= "עמוד מספר " + Globals!PageNumber.ToString + " מתוך " + 
+Globals!TotalPages.ToString + " עמודים - " + 
+Globals!ExecutionTime.ToShortDateString</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.58201cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageFooter>
+  <TopMargin>1.5cm</TopMargin>
+  <PageHeight>21cm</PageHeight>
+</Report>
