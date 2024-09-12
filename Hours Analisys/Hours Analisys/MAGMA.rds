@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="MAGMA">
+<RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="MAGMA">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=MGSERVER;Initial Catalog=MAGMA</ConnectString>
+    <ConnectString>Data Source=MAGMAMAIN;Initial Catalog=MAGMA;TrustServerCertificate=True</ConnectString>
     <IntegratedSecurity>true</IntegratedSecurity>
   </ConnectionProperties>
   <DataSourceID>2741873d-7543-47d5-9777-fd7c0c4ae77f</DataSourceID>
