@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE labels SYSTEM "label.dtd">
-<labels>
-  <label _FORMAT="DummyLabel.nlbl"  _PRINTERNAME="PDFCreator" _PRINTERNUMBER="9" _QUANTITY="1" _DUPLICATES="2">
-    <variable name="strTextSample">558322895</variable>
-  </label>
-</labels>
