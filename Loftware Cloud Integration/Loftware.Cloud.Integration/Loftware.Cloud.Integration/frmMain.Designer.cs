@@ -262,9 +262,9 @@
             this.lblSerializedLabels.Location = new System.Drawing.Point(187, 73);
             this.lblSerializedLabels.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSerializedLabels.Name = "lblSerializedLabels";
-            this.lblSerializedLabels.Size = new System.Drawing.Size(111, 16);
+            this.lblSerializedLabels.Size = new System.Drawing.Size(110, 16);
             this.lblSerializedLabels.TabIndex = 17;
-            this.lblSerializedLabels.Text = "Serialized Labels";
+            this.lblSerializedLabels.Text = "Duplicate Copies";
             // 
             // lblInput
             // 
