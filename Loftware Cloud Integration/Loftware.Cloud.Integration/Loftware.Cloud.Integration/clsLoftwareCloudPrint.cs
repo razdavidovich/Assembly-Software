@@ -79,45 +79,86 @@ namespace Loftware.Cloud.Integration
                     {
                         xmlWriter.Formatting = Formatting.Indented;
 
-                        // Write the XML declaration
-                        xmlWriter.WriteStartDocument(false);
-
-                        xmlWriter.WriteDocType("labels", null, m_strLabelDtd, null);
-
-                        // Write the root element
-                        xmlWriter.WriteStartElement("labels");
-
-                        // Write a book element
-                        xmlWriter.WriteStartElement("label");
-
-                        if (!string.IsNullOrEmpty(strLabelName))
-                            xmlWriter.WriteAttributeString("_FORMAT", strLabelName);
-
-                        if (!string.IsNullOrEmpty(strPrinterName))
-                            xmlWriter.WriteAttributeString("_PRINTERNAME", strPrinterName);
-
-                        if (intNumberOfCopies > 0)
-                            xmlWriter.WriteAttributeString("_QUANTITY", Convert.ToString(intNumberOfCopies, 10));
-
-                        if (intSerializedLabels > 0)
-                            xmlWriter.WriteAttributeString("_DUPLICATES", Convert.ToString(intSerializedLabels, 10));
-
-                        foreach (var item in dictParams)
+                        if (LPSXmlFileFormat.Loftware == lPSXmlFileFormat)
                         {
-                            xmlWriter.WriteStartElement("variable");
-                            xmlWriter.WriteAttributeString("name", item.Key);
-                            WriteSafeXmlString(item.Value, xmlWriter);
+                            // Write the XML declaration
+                            xmlWriter.WriteStartDocument(false);
+
+                            xmlWriter.WriteDocType("labels", null, m_strLabelDtd, null);
+
+                            // Write the root element
+                            xmlWriter.WriteStartElement("labels");
+
+                            // Write a book element
+                            xmlWriter.WriteStartElement("label");
+
+                            if (!string.IsNullOrEmpty(strLabelName))
+                                xmlWriter.WriteAttributeString("_FORMAT", strLabelName);
+
+                            if (!string.IsNullOrEmpty(strPrinterName))
+                                xmlWriter.WriteAttributeString("_PRINTERNAME", strPrinterName);
+
+                            if (intNumberOfCopies > 0)
+                                xmlWriter.WriteAttributeString("_QUANTITY", Convert.ToString(intNumberOfCopies, 10));
+
+                            if (intSerializedLabels > 0)
+                                xmlWriter.WriteAttributeString("_DUPLICATES", Convert.ToString(intSerializedLabels, 10));
+
+                            foreach (var item in dictParams)
+                            {
+                                xmlWriter.WriteStartElement("variable");
+                                xmlWriter.WriteAttributeString("name", item.Key);
+                                WriteSafeXmlString(item.Value, xmlWriter);
+                                xmlWriter.WriteEndElement();
+                            }
+
+                            // Close the book element
+                            xmlWriter.WriteEndElement();
+
+                            // Close the root element
+                            xmlWriter.WriteEndElement();
+
+                            // End the document
+                            xmlWriter.WriteEndDocument();
+                        }
+                        else if (LPSXmlFileFormat.NiceLabel == lPSXmlFileFormat)
+                        {
+                            // Write the root element
+                            xmlWriter.WriteStartElement("nice_commands");
+
+                            // Write a label element
+                            xmlWriter.WriteStartElement("label");
+
+                            if (!string.IsNullOrEmpty(strLabelName))
+                                xmlWriter.WriteAttributeString("name", strLabelName);
+
+                            // Write a print_job element
+                            xmlWriter.WriteStartElement("print_job");
+
+                            if (!string.IsNullOrEmpty(strPrinterName))
+                                xmlWriter.WriteAttributeString("printer", strPrinterName);
+
+                            if (intNumberOfCopies > 0)
+                                xmlWriter.WriteAttributeString("quantity", Convert.ToString(intNumberOfCopies, 10));
+
+                            if (intSerializedLabels > 0)
+                                xmlWriter.WriteAttributeString("identical_copies", Convert.ToString(intSerializedLabels, 10));
+
+                            foreach (var item in dictParams)
+                            {
+                                xmlWriter.WriteStartElement("variable");
+                                xmlWriter.WriteAttributeString("name", item.Key);
+                                WriteSafeXmlString(item.Value, xmlWriter);
+                                xmlWriter.WriteEndElement();
+                            }
+
+                            // Close the print_job element
+                            xmlWriter.WriteEndElement();
+
+                            // Close the root element
                             xmlWriter.WriteEndElement();
                         }
-
-                        // Close the book element
-                        xmlWriter.WriteEndElement();
-
-                        // Close the root element
-                        xmlWriter.WriteEndElement();
-
-                        // End the document
-                        xmlWriter.WriteEndDocument();
+                        
                     }
 
                     // Return the generated XML as a string
