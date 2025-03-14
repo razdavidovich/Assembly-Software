@@ -196,7 +196,7 @@ namespace Loftware.Cloud.Integration
                 PrintValidation();
                 SaveAppConfigDetails();
 
-                clsLoftwareCloudPrint objLoftwareCloudPrint = new clsLoftwareCloudPrint(txtIPAddress.Text, Convert.ToInt32(txtPort.Text));
+                clsLoftwareCloudPrint objclsLoftwareCloudPrint = new clsLoftwareCloudPrint(txtIPAddress.Text, Convert.ToInt32(txtPort.Text));
 
                 Dictionary<string, string> dictDictionary = new Dictionary<string, string>();
                 foreach (var row in ugInput.Rows)
@@ -204,9 +204,7 @@ namespace Loftware.Cloud.Integration
                     dictDictionary.Add(row.Cells[0].Text, row.Cells[1].Text);
                 }
 
-                //int intStatus = objLoftwareCloudPrint.PrintBatchLabelDictionary("ZEBRA_105S", "DummyLabel.nlbl", 1, 1, dictDictionary);
-
-                int intStatus = objLoftwareCloudPrint.PrintBatchLabelDictionary(txtPrinterName.Text, txtLabelName.Text, int.Parse(txtSerializedLabel.Text), int.Parse(txtNumberOfCopies.Text), dictDictionary);
+                int intStatus = objclsLoftwareCloudPrint.PrintBatchLabelDictionary(txtPrinterName.Text, txtLabelName.Text, int.Parse(txtSerializedLabel.Text), int.Parse(txtNumberOfCopies.Text), dictDictionary, clsLoftwareCloudPrint.LPSXmlFileFormat.Loftware);
 
                 rtxtSuccessMsg.Text = intStatus.ToString();
                 rtxtSuccessMsg.BackColor = 4 == intStatus ? Color.Green : Color.Red;
