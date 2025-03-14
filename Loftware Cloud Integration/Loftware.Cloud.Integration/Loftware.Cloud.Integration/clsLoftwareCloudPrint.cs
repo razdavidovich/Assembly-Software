@@ -19,6 +19,12 @@ namespace Loftware.Cloud.Integration
             DeviceError = 8
         }
 
+        public enum LPSXmlFileFormat
+        {
+            Loftware = 1,
+            NiceLabel = 2
+        }
+
         public string strFullEndpoint { get; }
         public string strIpAddress { get; }
         public int intPort { get; }
@@ -42,11 +48,11 @@ namespace Loftware.Cloud.Integration
         }
 
         #region PrintBatchLabelDictionary
-        public int PrintBatchLabelDictionary(string strPrinterName, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams)
+        public int PrintBatchLabelDictionary(string strPrinterName, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams, LPSXmlFileFormat lPSXmlFileFormat = LPSXmlFileFormat.Loftware)
         {
             try
             {
-                string strXMLString = GenerateXmlString(strPrinterName, strLabelName, intSerializedLabels, intNumberOfCopies, dictParams);
+                string strXMLString = GenerateXmlString(strPrinterName, strLabelName, intSerializedLabels, intNumberOfCopies, dictParams, lPSXmlFileFormat);
                 string strTcpResponse = SendMessageTcp(strXMLString);
                 bool success = int.TryParse(strTcpResponse, out int result);
                 if (!success)
@@ -63,7 +69,7 @@ namespace Loftware.Cloud.Integration
         #endregion
 
         #region GenerateXmlString
-        private string GenerateXmlString(string strPrinterName, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams)
+        private string GenerateXmlString(string strPrinterName, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams, LPSXmlFileFormat lPSXmlFileFormat = LPSXmlFileFormat.Loftware)
         {
             try
             {
