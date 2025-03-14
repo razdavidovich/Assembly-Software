@@ -121,7 +121,7 @@ namespace Loftware.Cloud.Integration
                             // End the document
                             xmlWriter.WriteEndDocument();
                         }
-                        else if (LPSXmlFileFormat.NiceLabel == lPSXmlFileFormat)
+                        else
                         {
                             // Write the root element
                             xmlWriter.WriteStartElement("nice_commands");
@@ -158,7 +158,6 @@ namespace Loftware.Cloud.Integration
                             // Close the root element
                             xmlWriter.WriteEndElement();
                         }
-                        
                     }
 
                     // Return the generated XML as a string
