@@ -64,6 +64,14 @@ namespace Loftware.Cloud.Integration
                 txtLabelName.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strLabelName");
                 txtNumberOfCopies.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strNumberOfCopies");
                 txtSerializedLabel.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strSerializedLabels");
+                if ("1" == clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strXmlFileFormat"))
+                {
+                    rdbLoftwareLabel.Checked = true;
+                }
+                else
+                {
+                    rdbNiceLabel.Checked = true;
+                }
 
                 string[] strLabelInputKeyValue = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strLabelInputKeyValue").Split(new string[] { "@@" }, StringSplitOptions.None);
 
@@ -93,6 +101,7 @@ namespace Loftware.Cloud.Integration
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strLabelName", txtLabelName.Text);
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strNumberOfCopies", txtNumberOfCopies.Text);
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strSerializedLabels", txtSerializedLabel.Text);
+                clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strXmlFileFormat", rdbLoftwareLabel.Checked ? "1" : "2");
 
                 string strLabelInputKeyValue = string.Empty;
                 foreach (var row in ugInput.Rows)
@@ -196,7 +205,7 @@ namespace Loftware.Cloud.Integration
                 PrintValidation();
                 SaveAppConfigDetails();
 
-                clsLoftwareCloudPrint objLoftwareCloudPrint = new clsLoftwareCloudPrint(txtIPAddress.Text, Convert.ToInt32(txtPort.Text));
+                clsLoftwareCloudPrint objclsLoftwareCloudPrint = new clsLoftwareCloudPrint(txtIPAddress.Text, Convert.ToInt32(txtPort.Text));
 
                 Dictionary<string, string> dictDictionary = new Dictionary<string, string>();
                 foreach (var row in ugInput.Rows)
@@ -204,9 +213,7 @@ namespace Loftware.Cloud.Integration
                     dictDictionary.Add(row.Cells[0].Text, row.Cells[1].Text);
                 }
 
-                //int intStatus = objLoftwareCloudPrint.PrintBatchLabelDictionary("ZEBRA_105S", "DummyLabel.nlbl", 1, 1, dictDictionary);
-
-                int intStatus = objLoftwareCloudPrint.PrintBatchLabelDictionary(txtPrinterName.Text, txtLabelName.Text, int.Parse(txtSerializedLabel.Text), int.Parse(txtNumberOfCopies.Text), dictDictionary);
+                int intStatus = objclsLoftwareCloudPrint.PrintBatchLabelDictionary(txtPrinterName.Text, txtLabelName.Text, int.Parse(txtSerializedLabel.Text), int.Parse(txtNumberOfCopies.Text), dictDictionary, (clsLoftwareCloudPrint.LPSXmlFileFormat)(rdbLoftwareLabel.Checked ? 1 : 2));
 
                 rtxtSuccessMsg.Text = intStatus.ToString();
                 rtxtSuccessMsg.BackColor = 4 == intStatus ? Color.Green : Color.Red;

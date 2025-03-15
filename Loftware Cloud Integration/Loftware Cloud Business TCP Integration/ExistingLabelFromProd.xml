@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE labels SYSTEM "label.dtd">
+<labels>
+  <label _FORMAT="ExistingLabelFromProd.nlbl" _PRINTERNAME="ZEBRA_105S" _QUANTITY="1" _DUPLICATES="2">
+    <variable name="intSlabID">558322895</variable>
+    <variable name="CalculatedBatchNumberNoGrade">5853643A</variable>
+    <variable name="intModelNumber">4011</variable>
+    <variable name="vchSlabFinishCode">R</variable>
+    <variable name="vchShortSlab" />
+    <variable name="relThickness">20</variable>
+    <variable name="intSorter">5</variable>
+    <variable name="vchSignature">NK</variable>
+    <variable name="intPackNumber">70</variable>
+    <variable name="vchISO">1401.06/2</variable>
+    <variable name="dateEndSorter">24/02/2025 02:46:56</variable>
+    <variable name="PartNumber">140111201590</variable>
+    <variable name="CalculatedBatchNumber">5853643BA</variable>
+    <variable name="vchPrintModelName">Cloudburst Concrete</variable>
+    <variable name="nsfpic">nsf.pcx.png</variable>
+  </label>
+</labels>
