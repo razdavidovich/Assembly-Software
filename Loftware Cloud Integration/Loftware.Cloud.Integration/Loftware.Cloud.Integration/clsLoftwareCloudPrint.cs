@@ -203,7 +203,7 @@ namespace Loftware.Cloud.Integration
                 {
                     // Set the send and receive timeouts (in milliseconds)
                     client.SendTimeout = 5000; // 5 seconds send timeout
-                    client.ReceiveTimeout = 5000; // 5 seconds receive timeout
+                    client.ReceiveTimeout = 30000; // 30 seconds receive timeout
 
                     using (NetworkStream stream = client.GetStream())
                     {
