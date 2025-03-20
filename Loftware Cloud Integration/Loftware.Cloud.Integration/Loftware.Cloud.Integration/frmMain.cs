@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
 using IWIN = Infragistics.Win;
@@ -202,6 +203,9 @@ namespace Loftware.Cloud.Integration
         {
             try
             {
+                rtxtSuccessMsg.Text = "";
+                rtxtSuccessMsg.BackColor = Color.White;
+
                 PrintValidation();
                 SaveAppConfigDetails();
 
@@ -221,6 +225,9 @@ namespace Loftware.Cloud.Integration
             }
             catch (Exception ex)
             {
+                rtxtSuccessMsg.Text = "2";
+                rtxtSuccessMsg.BackColor = Color.Red;
+                rtxtSuccessMsg.ForeColor = Color.White;
                 LogErrorToTextBox(ex);
             }
         }
