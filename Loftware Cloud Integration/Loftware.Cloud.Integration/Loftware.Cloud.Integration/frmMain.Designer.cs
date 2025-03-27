@@ -47,10 +47,10 @@
             this.txtPrinterName = new System.Windows.Forms.TextBox();
             this.txtLabelName = new System.Windows.Forms.TextBox();
             this.lblLabelName = new System.Windows.Forms.Label();
-            this.txtNumberOfCopies = new System.Windows.Forms.TextBox();
-            this.lblNumberOfCopies = new System.Windows.Forms.Label();
-            this.txtSerializedLabel = new System.Windows.Forms.TextBox();
-            this.lblSerializedLabels = new System.Windows.Forms.Label();
+            this.txtNumberOfQuantity = new System.Windows.Forms.TextBox();
+            this.lblNumberOfQuantity = new System.Windows.Forms.Label();
+            this.txtNumberOfDuplicates = new System.Windows.Forms.TextBox();
+            this.lblNumberOfDuplicates = new System.Windows.Forms.Label();
             this.lblInput = new System.Windows.Forms.Label();
             this.ugInput = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnClearInput = new System.Windows.Forms.Button();
@@ -225,47 +225,47 @@
             this.lblLabelName.Text = "Label Name";
             this.ttForLabelName.SetToolTip(this.lblLabelName, "Label Name (or) Full Path");
             // 
-            // txtNumberOfCopies
+            // txtNumberOfQuantity
             // 
-            this.txtNumberOfCopies.Location = new System.Drawing.Point(130, 70);
-            this.txtNumberOfCopies.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNumberOfCopies.Name = "txtNumberOfCopies";
-            this.txtNumberOfCopies.Size = new System.Drawing.Size(45, 22);
-            this.txtNumberOfCopies.TabIndex = 16;
-            this.txtNumberOfCopies.Text = "0";
-            this.txtNumberOfCopies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumericValidation);
+            this.txtNumberOfQuantity.Location = new System.Drawing.Point(135, 70);
+            this.txtNumberOfQuantity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumberOfQuantity.Name = "txtNumberOfQuantity";
+            this.txtNumberOfQuantity.Size = new System.Drawing.Size(45, 22);
+            this.txtNumberOfQuantity.TabIndex = 16;
+            this.txtNumberOfQuantity.Text = "0";
+            this.txtNumberOfQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumericValidation);
             // 
-            // lblNumberOfCopies
+            // lblNumberOfQuantity
             // 
-            this.lblNumberOfCopies.AutoSize = true;
-            this.lblNumberOfCopies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberOfCopies.Location = new System.Drawing.Point(5, 73);
-            this.lblNumberOfCopies.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNumberOfCopies.Name = "lblNumberOfCopies";
-            this.lblNumberOfCopies.Size = new System.Drawing.Size(117, 16);
-            this.lblNumberOfCopies.TabIndex = 15;
-            this.lblNumberOfCopies.Text = "Number Of Copies";
+            this.lblNumberOfQuantity.AutoSize = true;
+            this.lblNumberOfQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberOfQuantity.Location = new System.Drawing.Point(5, 73);
+            this.lblNumberOfQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNumberOfQuantity.Name = "lblNumberOfQuantity";
+            this.lblNumberOfQuantity.Size = new System.Drawing.Size(122, 16);
+            this.lblNumberOfQuantity.TabIndex = 15;
+            this.lblNumberOfQuantity.Text = "Number Of Quantity";
             // 
-            // txtSerializedLabel
+            // txtNumberOfDuplicates
             // 
-            this.txtSerializedLabel.Location = new System.Drawing.Point(306, 70);
-            this.txtSerializedLabel.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSerializedLabel.Name = "txtSerializedLabel";
-            this.txtSerializedLabel.Size = new System.Drawing.Size(45, 22);
-            this.txtSerializedLabel.TabIndex = 18;
-            this.txtSerializedLabel.Text = "0";
-            this.txtSerializedLabel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumericValidation);
+            this.txtNumberOfDuplicates.Location = new System.Drawing.Point(320, 70);
+            this.txtNumberOfDuplicates.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumberOfDuplicates.Name = "txtNumberOfDuplicates";
+            this.txtNumberOfDuplicates.Size = new System.Drawing.Size(45, 22);
+            this.txtNumberOfDuplicates.TabIndex = 18;
+            this.txtNumberOfDuplicates.Text = "0";
+            this.txtNumberOfDuplicates.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumericValidation);
             // 
-            // lblSerializedLabels
+            // lblNumberOfDuplicates
             // 
-            this.lblSerializedLabels.AutoSize = true;
-            this.lblSerializedLabels.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSerializedLabels.Location = new System.Drawing.Point(187, 73);
-            this.lblSerializedLabels.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSerializedLabels.Name = "lblSerializedLabels";
-            this.lblSerializedLabels.Size = new System.Drawing.Size(110, 16);
-            this.lblSerializedLabels.TabIndex = 17;
-            this.lblSerializedLabels.Text = "Duplicate Copies";
+            this.lblNumberOfDuplicates.AutoSize = true;
+            this.lblNumberOfDuplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberOfDuplicates.Location = new System.Drawing.Point(197, 73);
+            this.lblNumberOfDuplicates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNumberOfDuplicates.Name = "lblNumberOfDuplicates";
+            this.lblNumberOfDuplicates.Size = new System.Drawing.Size(115, 16);
+            this.lblNumberOfDuplicates.TabIndex = 17;
+            this.lblNumberOfDuplicates.Text = "Duplicate Quantity";
             // 
             // lblInput
             // 
@@ -346,10 +346,10 @@
             this.Controls.Add(this.btnClearInput);
             this.Controls.Add(this.ugInput);
             this.Controls.Add(this.lblInput);
-            this.Controls.Add(this.txtSerializedLabel);
-            this.Controls.Add(this.lblSerializedLabels);
-            this.Controls.Add(this.txtNumberOfCopies);
-            this.Controls.Add(this.lblNumberOfCopies);
+            this.Controls.Add(this.txtNumberOfDuplicates);
+            this.Controls.Add(this.lblNumberOfDuplicates);
+            this.Controls.Add(this.txtNumberOfQuantity);
+            this.Controls.Add(this.lblNumberOfQuantity);
             this.Controls.Add(this.txtLabelName);
             this.Controls.Add(this.lblLabelName);
             this.Controls.Add(this.txtPrinterName);
@@ -398,10 +398,10 @@
         private System.Windows.Forms.TextBox txtPrinterName;
         private System.Windows.Forms.TextBox txtLabelName;
         private System.Windows.Forms.Label lblLabelName;
-        private System.Windows.Forms.TextBox txtNumberOfCopies;
-        private System.Windows.Forms.Label lblNumberOfCopies;
-        private System.Windows.Forms.TextBox txtSerializedLabel;
-        private System.Windows.Forms.Label lblSerializedLabels;
+        private System.Windows.Forms.TextBox txtNumberOfQuantity;
+        private System.Windows.Forms.Label lblNumberOfQuantity;
+        private System.Windows.Forms.TextBox txtNumberOfDuplicates;
+        private System.Windows.Forms.Label lblNumberOfDuplicates;
         private System.Windows.Forms.Label lblInput;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugInput;
         private System.Windows.Forms.Button btnClearInput;

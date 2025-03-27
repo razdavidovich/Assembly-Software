@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
 using IWIN = Infragistics.Win;
@@ -63,8 +62,8 @@ namespace Loftware.Cloud.Integration
                 txtPort.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strPort");
                 txtPrinterName.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strPrinterName");
                 txtLabelName.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strLabelName");
-                txtNumberOfCopies.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strNumberOfCopies");
-                txtSerializedLabel.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strSerializedLabels");
+                txtNumberOfQuantity.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strNumberOfQuantity");
+                txtNumberOfDuplicates.Text = clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strNumberOfDuplicates");
                 if ("1" == clsCommon.ReadSingleConfigValue("Settings", "AppSettings", "strXmlFileFormat"))
                 {
                     rdbLoftwareLabel.Checked = true;
@@ -100,8 +99,8 @@ namespace Loftware.Cloud.Integration
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strPort", txtPort.Text);
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strPrinterName", txtPrinterName.Text);
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strLabelName", txtLabelName.Text);
-                clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strNumberOfCopies", txtNumberOfCopies.Text);
-                clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strSerializedLabels", txtSerializedLabel.Text);
+                clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strNumberOfQuantity", txtNumberOfQuantity.Text);
+                clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strNumberOfDuplicates", txtNumberOfDuplicates.Text);
                 clsCommon.SaveConfigSettingsValue("Settings", "AppSettings", "strXmlFileFormat", rdbLoftwareLabel.Checked ? "1" : "2");
 
                 string strLabelInputKeyValue = string.Empty;
@@ -177,17 +176,17 @@ namespace Loftware.Cloud.Integration
                     return;
                 }
 
-                if (string.IsNullOrEmpty(txtNumberOfCopies.Text))
+                if (string.IsNullOrEmpty(txtNumberOfQuantity.Text))
                 {
-                    MessageBox.Show("Number Of Copies should not be empty", "Error");
-                    txtNumberOfCopies.Focus();
+                    MessageBox.Show("Number Of Quantity should not be empty", "Error");
+                    txtNumberOfQuantity.Focus();
                     return;
                 }
 
-                if (string.IsNullOrEmpty(txtSerializedLabel.Text))
+                if (string.IsNullOrEmpty(txtNumberOfDuplicates.Text))
                 {
-                    MessageBox.Show("Serialized Label should not be empty", "Error");
-                    txtSerializedLabel.Focus();
+                    MessageBox.Show("Number Of Duplicate should not be empty", "Error");
+                    txtNumberOfDuplicates.Focus();
                     return;
                 }
             }
@@ -217,7 +216,7 @@ namespace Loftware.Cloud.Integration
                     dictDictionary.Add(row.Cells[0].Text, row.Cells[1].Text);
                 }
 
-                int intStatus = objclsLoftwareCloudPrint.PrintBatchLabelDictionary(txtPrinterName.Text, txtLabelName.Text, int.Parse(txtSerializedLabel.Text), int.Parse(txtNumberOfCopies.Text), dictDictionary, (clsLoftwareCloudPrint.LPSXmlFileFormat)(rdbLoftwareLabel.Checked ? 1 : 2));
+                int intStatus = objclsLoftwareCloudPrint.PrintBatchLabelDictionary(txtPrinterName.Text, txtLabelName.Text, int.Parse(txtNumberOfQuantity.Text), int.Parse(txtNumberOfDuplicates.Text), dictDictionary, (clsLoftwareCloudPrint.LPSXmlFileFormat)(rdbLoftwareLabel.Checked ? 1 : 2));
 
                 rtxtSuccessMsg.Text = intStatus.ToString();
                 rtxtSuccessMsg.BackColor = 4 == intStatus ? Color.Green : Color.Red;
