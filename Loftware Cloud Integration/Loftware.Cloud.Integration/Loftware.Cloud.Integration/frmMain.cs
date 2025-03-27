@@ -144,7 +144,7 @@ namespace Loftware.Cloud.Integration
         #endregion
 
         #region PrintValidation
-        public void PrintValidation()
+        public bool PrintValidation()
         {
             try
             {
@@ -152,43 +152,45 @@ namespace Loftware.Cloud.Integration
                 {
                     MessageBox.Show("IP Address should not be empty", "Error");
                     txtIPAddress.Focus();
-                    return;
+                    return false;
                 }
 
                 if (string.IsNullOrEmpty(txtPort.Text))
                 {
                     MessageBox.Show("Port should not be empty", "Error");
                     txtPort.Focus();
-                    return;
+                    return false;
                 }
 
                 if (string.IsNullOrEmpty(txtPrinterName.Text))
                 {
                     MessageBox.Show("Printer Name should not be empty", "Error");
                     txtPrinterName.Focus();
-                    return;
+                    return false;
                 }
 
                 if (string.IsNullOrEmpty(txtLabelName.Text))
                 {
                     MessageBox.Show("Label Name should not be empty", "Error");
                     txtLabelName.Focus();
-                    return;
+                    return false;
                 }
 
                 if (string.IsNullOrEmpty(txtNumberOfQuantity.Text))
                 {
                     MessageBox.Show("Number Of Quantity should not be empty", "Error");
                     txtNumberOfQuantity.Focus();
-                    return;
+                    return false;
                 }
 
                 if (string.IsNullOrEmpty(txtNumberOfDuplicates.Text))
                 {
                     MessageBox.Show("Number Of Duplicate should not be empty", "Error");
                     txtNumberOfDuplicates.Focus();
-                    return;
+                    return false;
                 }
+
+                return true;
             }
             catch
             {
@@ -205,7 +207,11 @@ namespace Loftware.Cloud.Integration
                 rtxtSuccessMsg.Text = "";
                 rtxtSuccessMsg.BackColor = Color.White;
 
-                PrintValidation();
+                if (!PrintValidation())
+                {
+                    return;
+                }
+
                 SaveAppConfigDetails();
 
                 clsLoftwareCloudPrint objclsLoftwareCloudPrint = new clsLoftwareCloudPrint(txtIPAddress.Text, Convert.ToInt32(txtPort.Text));
