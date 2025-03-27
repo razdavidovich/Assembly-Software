@@ -48,11 +48,11 @@ namespace Loftware.Cloud.Integration
         }
 
         #region PrintBatchLabelDictionary
-        public int PrintBatchLabelDictionary(string strPrinterName, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams, LPSXmlFileFormat lPSXmlFileFormat = LPSXmlFileFormat.Loftware)
+        public int PrintBatchLabelDictionary(string strPrinterName, string strLabelName, int intNumberOfQuantity, int intNumberOfDuplicates, Dictionary<string, string> dictParams, LPSXmlFileFormat lPSXmlFileFormat = LPSXmlFileFormat.Loftware)
         {
             try
             {
-                string strXMLString = GenerateXmlString(strPrinterName, strLabelName, intSerializedLabels, intNumberOfCopies, dictParams, lPSXmlFileFormat);
+                string strXMLString = GenerateXmlString(strPrinterName, strLabelName, intNumberOfQuantity, intNumberOfDuplicates, dictParams, lPSXmlFileFormat);
                 string strTcpResponse = SendMessageTcp(strXMLString);
                 bool success = int.TryParse(strTcpResponse, out int result);
                 if (!success)
@@ -69,7 +69,7 @@ namespace Loftware.Cloud.Integration
         #endregion
 
         #region GenerateXmlString
-        private string GenerateXmlString(string strPrinterName, string strLabelName, int intSerializedLabels, int intNumberOfCopies, Dictionary<string, string> dictParams, LPSXmlFileFormat lPSXmlFileFormat = LPSXmlFileFormat.Loftware)
+        private string GenerateXmlString(string strPrinterName, string strLabelName, int intNumberOfQuantity, int intNumberOfDuplicates, Dictionary<string, string> dictParams, LPSXmlFileFormat lPSXmlFileFormat = LPSXmlFileFormat.Loftware)
         {
             try
             {
@@ -98,11 +98,11 @@ namespace Loftware.Cloud.Integration
                             if (!string.IsNullOrEmpty(strPrinterName))
                                 xmlWriter.WriteAttributeString("_PRINTERNAME", strPrinterName);
 
-                            if (intNumberOfCopies > 0)
-                                xmlWriter.WriteAttributeString("_QUANTITY", Convert.ToString(intNumberOfCopies, 10));
+                            if (intNumberOfQuantity > 0)
+                                xmlWriter.WriteAttributeString("_QUANTITY", Convert.ToString(intNumberOfQuantity, 10));
 
-                            if (intSerializedLabels > 0)
-                                xmlWriter.WriteAttributeString("_DUPLICATES", Convert.ToString(intSerializedLabels, 10));
+                            if (intNumberOfDuplicates > 0)
+                                xmlWriter.WriteAttributeString("_DUPLICATES", Convert.ToString(intNumberOfDuplicates, 10));
 
                             foreach (var item in dictParams)
                             {
@@ -138,11 +138,11 @@ namespace Loftware.Cloud.Integration
                             if (!string.IsNullOrEmpty(strPrinterName))
                                 xmlWriter.WriteAttributeString("printer", strPrinterName);
 
-                            if (intNumberOfCopies > 0)
-                                xmlWriter.WriteAttributeString("quantity", Convert.ToString(intNumberOfCopies, 10));
+                            if (intNumberOfQuantity > 0)
+                                xmlWriter.WriteAttributeString("quantity", Convert.ToString(intNumberOfQuantity, 10));
 
-                            if (intSerializedLabels > 0)
-                                xmlWriter.WriteAttributeString("identical_copies", Convert.ToString(intSerializedLabels, 10));
+                            if (intNumberOfDuplicates > 0)
+                                xmlWriter.WriteAttributeString("identical_copies", Convert.ToString(intNumberOfDuplicates, 10));
 
                             foreach (var item in dictParams)
                             {
