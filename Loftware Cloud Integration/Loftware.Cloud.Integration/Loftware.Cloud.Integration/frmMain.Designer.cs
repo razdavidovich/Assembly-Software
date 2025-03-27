@@ -248,7 +248,7 @@
             // 
             // txtNumberOfDuplicates
             // 
-            this.txtNumberOfDuplicates.Location = new System.Drawing.Point(320, 70);
+            this.txtNumberOfDuplicates.Location = new System.Drawing.Point(327, 70);
             this.txtNumberOfDuplicates.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumberOfDuplicates.Name = "txtNumberOfDuplicates";
             this.txtNumberOfDuplicates.Size = new System.Drawing.Size(45, 22);
@@ -260,12 +260,12 @@
             // 
             this.lblNumberOfDuplicates.AutoSize = true;
             this.lblNumberOfDuplicates.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberOfDuplicates.Location = new System.Drawing.Point(197, 73);
+            this.lblNumberOfDuplicates.Location = new System.Drawing.Point(188, 73);
             this.lblNumberOfDuplicates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumberOfDuplicates.Name = "lblNumberOfDuplicates";
-            this.lblNumberOfDuplicates.Size = new System.Drawing.Size(115, 16);
+            this.lblNumberOfDuplicates.Size = new System.Drawing.Size(131, 16);
             this.lblNumberOfDuplicates.TabIndex = 17;
-            this.lblNumberOfDuplicates.Text = "Duplicate Quantity";
+            this.lblNumberOfDuplicates.Text = "Number Of Duplicate";
             // 
             // lblInput
             // 
