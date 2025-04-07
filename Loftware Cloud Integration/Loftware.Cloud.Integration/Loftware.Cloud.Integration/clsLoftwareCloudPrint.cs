@@ -29,10 +29,10 @@ namespace Loftware.Cloud.Integration
         public string strIpAddress { get; }
         public int intPort { get; }
 
-        private string StrXMLString = string.Empty;
+        private string _strXMLString = string.Empty;
         public string XMLString
         {
-            get { return StrXMLString; }
+            get { return _strXMLString; }
         }
 
         protected string m_strLabelDtd = "label.dtd";
@@ -59,7 +59,7 @@ namespace Loftware.Cloud.Integration
             try
             {
                 string strXMLString = GenerateXmlString(strPrinterName, strLabelName, intNumberOfQuantity, intNumberOfDuplicates, dictParams, lPSXmlFileFormat);
-                this.StrXMLString = strXMLString;
+                this._strXMLString = strXMLString;
                 string strTcpResponse = SendMessageTcp(strXMLString);
                 bool success = int.TryParse(strTcpResponse, out int result);
                 if (!success)
