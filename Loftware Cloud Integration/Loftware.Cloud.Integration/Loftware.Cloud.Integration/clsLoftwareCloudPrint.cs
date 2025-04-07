@@ -29,7 +29,7 @@ namespace Loftware.Cloud.Integration
         public string strIpAddress { get; }
         public int intPort { get; }
 
-        string StrXMLString = string.Empty;
+        private string StrXMLString = string.Empty;
         public string XMLString
         {
             get { return StrXMLString; }
