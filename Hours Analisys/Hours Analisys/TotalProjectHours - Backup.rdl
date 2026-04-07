@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="MAGMA">
+      <DataSourceReference>MAGMA</DataSourceReference>
+      <rd:DataSourceID>28cdb818-5ae6-48ef-a314-f4c138bea64f</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>1cm</BottomMargin>
+  <RightMargin>1cm</RightMargin>
+  <PageWidth>21cm</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="intReportYear">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Report Year</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="intReportMonth">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Report Month</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="intTaskCode">
+      <DataType>Integer</DataType>
+      <Prompt>מספר פרויקט</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="intEmployee">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Employee Code</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="intCompanyCode">
+      <DataType>Integer</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>שם חברה</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Company_Select</DataSetName>
+          <ValueField>CompanyCode</ValueField>
+          <LabelField>CompanyName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Chart Name="HoursDistribution">
+        <Legend>
+          <Visible>true</Visible>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+          <Position>BottomLeft</Position>
+          <Layout>Table</Layout>
+        </Legend>
+        <Subtype>Plain</Subtype>
+        <Title>
+          <Caption>התפלגות שעות לפי חודשים</Caption>
+          <Style>
+            <FontWeight>700</FontWeight>
+            <FontSize>12pt</FontSize>
+          </Style>
+        </Title>
+        <CategoryAxis>
+          <Axis>
+            <Title>
+              <Caption>חודשים</Caption>
+            </Title>
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Visible>true</Visible>
+          </Axis>
+        </CategoryAxis>
+        <PointWidth>0</PointWidth>
+        <Left>0.25cm</Left>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <DataSetName>HoursPerMonth</DataSetName>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <DynamicSeries>
+              <Grouping Name="HoursDistribution_SeriesGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MonthAndYear.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!MonthAndYear.Value</Label>
+            </DynamicSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>16cm</Top>
+        <PlotArea>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <BackgroundColor>LightGrey</BackgroundColor>
+          </Style>
+        </PlotArea>
+        <ValueAxis>
+          <Axis>
+            <Title>
+              <Caption>שעות עבודה</Caption>
+            </Title>
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <ZIndex>2</ZIndex>
+        <Type>Column</Type>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TotalHours.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontWeight>700</FontWeight>
+                  </Style>
+                  <Value>=Fields!TotalHours.Value</Value>
+                  <Position>Bottom</Position>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+      </Chart>
+      <Textbox Name="textbox1">
+        <Left>0.01786cm</Left>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <FontSize>20pt</FontSize>
+          <Color>SteelBlue</Color>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.91429cm</Height>
+        <Value>סיכום שעות לפרויקט</Value>
+      </Textbox>
+      <List Name="List1">
+        <Sorting>
+          <SortBy>
+            <SortExpression>=Fields!TaskCode.Value</SortExpression>
+            <Direction>Ascending</Direction>
+          </SortBy>
+        </Sorting>
+        <ReportItems>
+          <Chart Name="TotalHoursDivided">
+            <Legend>
+              <Visible>true</Visible>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+              <Position>BottomCenter</Position>
+            </Legend>
+            <Subtype>Plain</Subtype>
+            <Title />
+            <CategoryAxis>
+              <Axis>
+                <Title />
+                <MajorGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MajorGridLines>
+                <MinorGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MinorGridLines>
+                <MajorTickMarks>Outside</MajorTickMarks>
+                <Min>0</Min>
+                <Visible>true</Visible>
+              </Axis>
+            </CategoryAxis>
+            <PointWidth>0</PointWidth>
+            <ThreeDProperties>
+              <ProjectionMode>Orthographic</ProjectionMode>
+              <Rotation>30</Rotation>
+              <Inclination>30</Inclination>
+              <Shading>Real</Shading>
+              <WallThickness>50</WallThickness>
+              <DrawingStyle>Cylinder</DrawingStyle>
+              <Clustered>true</Clustered>
+            </ThreeDProperties>
+            <DataSetName>MAGMA</DataSetName>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart1_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!EmployeeName.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!EmployeeName.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
+            <Top>4cm</Top>
+            <PlotArea>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+                <BackgroundColor>LightGrey</BackgroundColor>
+              </Style>
+            </PlotArea>
+            <ValueAxis>
+              <Axis>
+                <Title />
+                <MajorGridLines>
+                  <ShowGridLines>true</ShowGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MajorGridLines>
+                <MinorGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MinorGridLines>
+                <MajorTickMarks>Outside</MajorTickMarks>
+                <Min>0</Min>
+                <Margin>true</Margin>
+                <Visible>true</Visible>
+                <Scalar>true</Scalar>
+              </Axis>
+            </ValueAxis>
+            <ZIndex>3</ZIndex>
+            <Type>Pie</Type>
+            <Width>16.25cm</Width>
+            <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Count(Fields!EmployeeName.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel>
+                      <Value>=Fields!EmployeeName.Value</Value>
+                      <Position>TopLeft</Position>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
+            <Style>
+              <TextAlign>Right</TextAlign>
+              <Direction>RTL</Direction>
+              <BackgroundColor>White</BackgroundColor>
+            </Style>
+          </Chart>
+          <Textbox Name="textbox11">
+            <Left>0.01786cm</Left>
+            <Top>1cm</Top>
+            <ZIndex>2</ZIndex>
+            <Width>16.23214cm</Width>
+            <Style>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingBottom>2pt</PaddingBottom>
+              <FontFamily>Tahoma</FontFamily>
+              <FontWeight>700</FontWeight>
+              <FontSize>12pt</FontSize>
+              <Direction>RTL</Direction>
+              <BackgroundColor>Yellow</BackgroundColor>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Height>0.75cm</Height>
+            <Value>= "שעות מתוכננות לפרויקט - " + Fields!PlannedHours.Value.ToString</Value>
+          </Textbox>
+          <Table Name="table1">
+            <DataSetName>MAGMA</DataSetName>
+            <Top>2cm</Top>
+            <TableGroups>
+              <TableGroup>
+                <Footer>
+                  <TableRows>
+                    <TableRow>
+                      <TableCells>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox10">
+                              <rd:DefaultName>textbox10</rd:DefaultName>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>700</FontWeight>
+                                <FontSize>12pt</FontSize>
+                                <BackgroundColor>DarkOrange</BackgroundColor>
+                                <Color>White</Color>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox3">
+                              <rd:DefaultName>textbox3</rd:DefaultName>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>700</FontWeight>
+                                <FontSize>12pt</FontSize>
+                                <BackgroundColor>DarkOrange</BackgroundColor>
+                                <Color>White</Color>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <Value>=Sum(Fields!HoursToEmployee.Value, "TaskCodeGroup")</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox5">
+                              <rd:DefaultName>textbox5</rd:DefaultName>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>700</FontWeight>
+                                <FontSize>12pt</FontSize>
+                                <BackgroundColor>DarkOrange</BackgroundColor>
+                                <Color>White</Color>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <Value>סך הכל שעות שהושקעו</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                      </TableCells>
+                      <Height>0.63492cm</Height>
+                    </TableRow>
+                  </TableRows>
+                </Footer>
+                <Grouping Name="TaskCodeGroup">
+                  <GroupExpressions>
+                    <GroupExpression>=Fields!TaskCode.Value</GroupExpression>
+                  </GroupExpressions>
+                </Grouping>
+              </TableGroup>
+              <TableGroup>
+                <Footer>
+                  <TableRows>
+                    <TableRow>
+                      <TableCells>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox8">
+                              <rd:DefaultName>textbox8</rd:DefaultName>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <BorderStyle>
+                                  <Default>Solid</Default>
+                                </BorderStyle>
+                                <TextAlign>Center</TextAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>700</FontWeight>
+                                <Format>P</Format>
+                                <BorderColor>
+                                  <Default>LightGrey</Default>
+                                </BorderColor>
+                                <BackgroundColor>#6e9eca</BackgroundColor>
+                                <Color>White</Color>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <Value>=Sum(Fields!HoursToEmployee.Value)/Sum(Fields!HoursToEmployee.Value, "TaskCodeGroup")</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox7">
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <BorderStyle>
+                                  <Default>Solid</Default>
+                                </BorderStyle>
+                                <TextAlign>Center</TextAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>700</FontWeight>
+                                <BorderColor>
+                                  <Default>LightGrey</Default>
+                                </BorderColor>
+                                <BackgroundColor>#6e9eca</BackgroundColor>
+                                <Color>White</Color>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <Value>=Sum(Fields!HoursToEmployee.Value)</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox9">
+                              <Style>
+                                <BorderStyle>
+                                  <Default>Solid</Default>
+                                </BorderStyle>
+                                <TextAlign>Right</TextAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>700</FontWeight>
+                                <BorderColor>
+                                  <Default>LightGrey</Default>
+                                </BorderColor>
+                                <BackgroundColor>#6e9eca</BackgroundColor>
+                                <Color>White</Color>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <Value>=Fields!EmployeeName.Value</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                      </TableCells>
+                      <Height>0.63492cm</Height>
+                    </TableRow>
+                  </TableRows>
+                </Footer>
+                <Sorting>
+                  <SortBy>
+                    <SortExpression>=Sum(Fields!HoursToEmployee.Value)</SortExpression>
+                    <Direction>Descending</Direction>
+                  </SortBy>
+                </Sorting>
+                <Grouping Name="table1_EmployeeName">
+                  <GroupExpressions>
+                    <GroupExpression>=Fields!EmployeeName.Value</GroupExpression>
+                  </GroupExpressions>
+                </Grouping>
+              </TableGroup>
+            </TableGroups>
+            <ZIndex>1</ZIndex>
+            <Width>16.25cm</Width>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox6">
+                          <rd:DefaultName>textbox6</rd:DefaultName>
+                          <ZIndex>8</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>אחוז מסך הפרויקט</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox4">
+                          <rd:DefaultName>textbox4</rd:DefaultName>
+                          <ZIndex>7</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>שעות עבודה לעובד</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox2">
+                          <rd:DefaultName>textbox2</rd:DefaultName>
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <FontSize>11pt</FontSize>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <Color>White</Color>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>שם עובד</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.55873cm</Height>
+                </TableRow>
+              </TableRows>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+            </Header>
+            <TableColumns>
+              <TableColumn>
+                <Width>5.25cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>4.25cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>6.75cm</Width>
+              </TableColumn>
+            </TableColumns>
+            <Height>1.82857cm</Height>
+          </Table>
+          <Textbox Name="Description">
+            <Left>0.01786cm</Left>
+            <rd:DefaultName>Description</rd:DefaultName>
+            <Action>
+              <Drillthrough>
+                <ReportName>EmployeeMonthlyHoursReport</ReportName>
+                <Parameters>
+                  <Parameter Name="intReportYear">
+                    <Value>0</Value>
+                  </Parameter>
+                  <Parameter Name="intReportMonth">
+                    <Value>0</Value>
+                  </Parameter>
+                  <Parameter Name="intTaskCode">
+                    <Value>=Fields!TaskCode.Value</Value>
+                  </Parameter>
+                  <Parameter Name="intEmployee">
+                    <Value>0</Value>
+                  </Parameter>
+                </Parameters>
+              </Drillthrough>
+            </Action>
+            <Style>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingBottom>2pt</PaddingBottom>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>14pt</FontSize>
+              <Color>SlateGray</Color>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Height>0.75cm</Height>
+            <Value>=Fields!TaskCode.Value.ToString + " - " + Fields!Description.Value.ToString</Value>
+          </Textbox>
+        </ReportItems>
+        <DataSetName>MAGMA</DataSetName>
+        <Top>0.91429cm</Top>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+          <Color>SlateGray</Color>
+        </Style>
+        <Grouping Name="list1_TaskCode">
+          <PageBreakAtEnd>true</PageBreakAtEnd>
+          <GroupExpressions>
+            <GroupExpression>=Fields!TaskCode.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
+        <Height>14.56614cm</Height>
+      </List>
+    </ReportItems>
+    <Height>27cm</Height>
+  </Body>
+  <rd:ReportID>579418b5-ae77-4e2f-ac0a-8f32364e2376</rd:ReportID>
+  <LeftMargin>1cm</LeftMargin>
+  <DataSets>
+    <DataSet Name="MAGMA">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.GetHoursToEmployee_Sp</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@intReportYear">
+            <Value>=Parameters!intReportYear.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intReportMonth">
+            <Value>=Parameters!intReportMonth.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intTaskCode">
+            <Value>=Parameters!intTaskCode.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intEmployee">
+            <Value>=Parameters!intEmployee.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intCompanyCode">
+            <Value>=Parameters!intCompanyCode.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="ReportID">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportID</DataField>
+        </Field>
+        <Field Name="ReportMonth">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportMonth</DataField>
+        </Field>
+        <Field Name="ReportYear">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportYear</DataField>
+        </Field>
+        <Field Name="EmployeeName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>EmployeeName</DataField>
+        </Field>
+        <Field Name="TaskCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>TaskCode</DataField>
+        </Field>
+        <Field Name="Description">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="ReportDate">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>ReportDate</DataField>
+        </Field>
+        <Field Name="HoursToEmployee">
+          <rd:TypeName>System.Double</rd:TypeName>
+          <DataField>HoursToEmployee</DataField>
+        </Field>
+        <Field Name="Comment">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Comment</DataField>
+        </Field>
+        <Field Name="PlannedHours">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>PlannedHours</DataField>
+        </Field>
+        <Field Name="ActionType">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ActionType</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HoursPerMonth">
+      <Query>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.GetHoursToEmployeePerTaskPerMonth_Sp</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@intReportYear">
+            <Value>=Parameters!intReportYear.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intReportMonth">
+            <Value>=Parameters!intReportMonth.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@intTaskCode">
+            <Value>=Parameters!intTaskCode.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <Timeout>30</Timeout>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="TaskCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>TaskCode</DataField>
+        </Field>
+        <Field Name="ReportYear">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportYear</DataField>
+        </Field>
+        <Field Name="ReportMonth">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>ReportMonth</DataField>
+        </Field>
+        <Field Name="MonthText">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>MonthText</DataField>
+        </Field>
+        <Field Name="TotalHours">
+          <rd:TypeName>System.Double</rd:TypeName>
+          <DataField>TotalHours</DataField>
+        </Field>
+        <Field Name="MonthAndYear">
+          <Value>=Fields!MonthText.Value + " " + CStr(Fields!ReportYear.Value)</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Company_Select">
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>SELECT     CompanyCode, CompanyName
+FROM         Company_Ta</CommandText>
+        <DataSourceName>MAGMA</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="CompanyCode">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>CompanyCode</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CompanyName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Author>Raz Davidovich</Author>
+  <Code />
+  <Width>16.26786cm</Width>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <Description>דו"ח המציג את סיכום השעות לפרויקט ואת התפלגותם לפי חודשים</Description>
+  <Language>en-US</Language>
+  <TopMargin>1cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>
